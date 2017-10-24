@@ -1,7 +1,11 @@
+// Module imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+
+// Component imports
 import { AppComponent } from './app.component';
 import { LoginRegComponent } from './login-reg/login-reg.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -30,6 +34,10 @@ import { ListingPhotoComponent } from './listing/listing-photo/listing-photo.com
 import { ListingInstantBookComponent } from './listing/listing-instant-book/listing-instant-book.component';
 import { ListingInfoNavComponent } from './listing/listing-info-nav/listing-info-nav.component';
 import { ListingInfoComponent } from './listing/listing-info/listing-info.component';
+
+// Service Imports
+import { GoogleApiService } from './google-api.service';
+import { LocalApiService } from './local-api.service';
 
 @NgModule({
   declarations: [
@@ -64,9 +72,11 @@ import { ListingInfoComponent } from './listing/listing-info/listing-info.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [GoogleApiService, LocalApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

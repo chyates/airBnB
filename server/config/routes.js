@@ -14,3 +14,9 @@ var Message = mongoose.model('Message');
 var Reservation = mongoose.model('Reservation');
 var Review = mongoose.model('Review');
 var User = mongoose.model('User');
+
+module.exports = function (app) {
+    // GET requests
+
+    // POST requests
+}
