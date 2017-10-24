@@ -1,19 +1,23 @@
 {
-    "name": "airBNB",
-    "version": "1.0.0",
-    "description": "",
-    "main": "test.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "bcrypt-nodejs": "0.0.3",
-      "body-parser": "^1.18.2",
-      "express": "^4.16.1",
-      "express-session": "^1.15.6",
-      "mongoose": "^4.12.1"
-    }
+  "name": "bicycles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.11.3",
+    "mongoose-unique-validator": "^1.0.6"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.2.1"
   }
+}

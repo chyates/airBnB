@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+<!-- =============================================================================================================== -->
+
+      <div class="modal-header"> 
+          <img src="http://logok.org/wp-content/uploads/2014/07/airbnb-logo-belo-880x628.png"  class="d-inline-block align-top" width="110" height="78.5" alt="airbnb logo">
+        <h1 style="color:grey" lass="modal-title">Login to continue</h1>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       
+      </div>
+<!-- =============================================================================================================== -->
+<!-- LOGIN -->
+<!-- =============================================================================================================== -->
+
+
+      <div class="modal-body">
+
+        <div class="container">
+          <div class="span6">
+            <div *ngIf="loginError">
+                  <p class="error" style="color: red">*{{loginError}}</p>
+                </div>
+            <div class="login">
+              <h1 style="color:grey">Login</h1>
+              <form (submit)="validateLogin()" #loginForm="ngForm">
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    
+                    <input type="email" name="lemail" [(ngModel)]="luser.email" required class="form-control form-control-lg" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    
+                    <input type="password" name="lpassword" [(ngModel)]="luser.password" required class="form-control form-control-lg" placeholder="Password">
+                  </div>
+                </div>
+
+                
+                <br>
+
+                <input type="submit" value="Log In" [disabled]="!loginForm.form.valid" class="btn btn-primary btn btn-danger">
+              </form>
+              
+            </div>
+          </div>
+        </div>
+<!-- =============================================================================================================== -->
+<!-- REGISTER -->
+<!-- =============================================================================================================== -->
+
+        <div class="container">
+          <div class="register">
+            <h1 style="color:grey">Register</h1>
+            <form (submit)="validateReg()" #regForm="ngForm">
+              <div *ngIf="regError">
+                <p style="color:red" class="error">*{{regError}}</p>
+              </div>
+
+
+              <div class="form-group row">  
+               
+                <div class="col-sm-4">
+                 <p style="color: red" *ngIf='!firstName.valid && (firstName.dirty || firstName.touched)'>*First name is required</p>
+                  <input type="text" name="fname" required [(ngModel)]="ruser.first_name" #firstName="ngModel" class="form-control form-control-lg" placeholder="First Name">
+                  
+                </div>
+              </div>
+              
+
+              <div class="form-group row">
+              
+                <div class="col-sm-4">
+                  <p style="color: red"  *ngIf='!lastName.valid && (lastName.dirty || lastName.touched)'>*Last name is required</p>
+                  <input type="text" name="lname" required [(ngModel)]="ruser.last_name" #lastName="ngModel" class="form-control form-control-lg" placeholder="Last Name">
+                </div>
+              </div>
+              
+
+              <div class="form-group row">
+                 
+                <div class="col-sm-4">
+                 <p style="color:red"   *ngIf='!remail.valid && (remail.dirty || remail.touched)'>*Email is not valid</p>
+                  <input type="email" name="remail" required pattern="^([A-Za-z0-9._\-]+)@([a-zA-Z0-9._\-]+)\.([a-zA-Z]+)$" [(ngModel)]="ruser.email"
+                    #remail="ngModel" class="form-control form-control-lg" placeholder="Em@il">
+                </div>
+              </div>
+              
+              
+
+              <div class="form-group row">
+               
+                <div class="col-sm-4">
+                  <p style="color: red"  *ngIf='!rpassword.valid && (rpassword.dirty || rpassword.touched)'>*Password Must be at least 8 characters</p>
+                  <input type="password" name="rpassword" required [(ngModel)]="ruser.password" #rpassword="ngModel" minlength="8" class="form-control form-control-lg"
+                    validateEqual="confirmPassword" reverse="true" placeholder="Password">
+                </div>
+              </div>
+              
+              
+
+              <div class="form-group row">
+               
+                <div class="col-sm-4">
+                   <p style="color: red"  *ngIf='!confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)'>*Passwords do not match</p>
+                  <input type="password" name="confirmPassword" [(ngModel)]="ruser.confirmPassword" #confirmPassword="ngModel" validateEqual="rpassword"
+                    reverse="false" class="form-control form-control-lg" placeholder="Confirm Password">
+                </div>
+              </div>
+              
+              
+
+              <input type="submit" value="Register" [disabled]="!regForm.form.valid" class="btn btn-primary btn btn-danger">
+            </form>
+          </div>
+        </div>
+      
+<!-- =============================================================================================================== -->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+<!-- =============================================================================================================== -->
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
