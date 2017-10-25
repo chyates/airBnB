@@ -1,4 +1,3 @@
-
 export class User {
     public first_name: String = '';
     public last_name: String = '';
@@ -6,4 +5,3 @@ export class User {
     public password: String = '';
     public confirmPassword: String = '';
     public phone: String = '';
-}

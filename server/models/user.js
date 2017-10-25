@@ -7,8 +7,13 @@ const UserSchema = new mongoose.Schema({
     last_name: {type: String},
     email: {type: String, unique: true},
     password: {type: String},
-    phone: {type: String, unique: true}
-});
+    phone: {type: String, unique: true},
+    userLevel: { type: Boolean },
+    messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
+    reservations: [{ type: Schema.Types.ObjectId, ref: 'Reservation' }],
+    listings: [{ type: Schema.Types.ObjectId, ref: 'Listing' }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+}, { timestamps: true });
 
 UserSchema.plugin(uniqueValidator);
 

@@ -1,13 +1,24 @@
-const path = require('path');
-const users = require('../controllers/user_controller.js');
+// const users = require('../controllers/user_controller.js');
 
-module.exports = (app) => {
-    app.get('/logout', users.logout);
-    app.get('/currentUser', users.current);
-    app.post('/register', users.register);
-    app.post('/login', users.login);
+// Require statments
+var mongoose = require('mongoose');
+var listings = require('../controllers/listings.js');
+var locations = require('../controllers/locations.js');
+var messages = require('../controllers/messages.js');
+var reservations = require('../controllers/reservations.js');
+var reviews = require('../controllers/reviews.js');
+var users = require('../controllers/users.js');
 
-    app.all('*', (req, res, next) => {
-        res.sendFile(path.resolve('./frontend/dist/index.html'));
-    })
+// Model imports
+var Listing = mongoose.model('Listing');
+var Location = mongoose.model('Location');
+var Message = mongoose.model('Message');
+var Reservation = mongoose.model('Reservation');
+var Review = mongoose.model('Review');
+var User = mongoose.model('User');
+
+module.exports = function (app) {
+    // GET requests
+
+    // POST requests
 }
