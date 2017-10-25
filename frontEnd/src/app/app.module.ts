@@ -38,6 +38,10 @@ import { ListingInfoComponent } from './listing/listing-info/listing-info.compon
 // Service Imports
 import { GoogleApiService } from './google-api.service';
 import { LocalApiService } from './local-api.service';
+// Google Maps Stuff
+import { AgmCoreModule } from '@agm/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -71,10 +75,15 @@ import { LocalApiService } from './local-api.service';
     ListingInfoComponent
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDCVcnQjMNJVY5DI_nQXsRsYJMGYs0VqYA',
+      libraries: ["places"]
+    }),
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [GoogleApiService, LocalApiService],
   bootstrap: [AppComponent]

@@ -34,7 +34,9 @@ import { ListingInfoComponent } from './listing/listing-info/listing-info.compon
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', component: AppComponent },
-  { path: 'test', component: InnerSearchMapComponent},
+  { path: 'test', component: InnerSearchComponent,
+  children: [{ path: 'map', component: InnerSearchMapComponent },{ path: 'listing', component: InnerSearchListingsComponent }]  
+},
   // { path: 'surveys/:id', component: SurveysOneComponent },
   // { path: 'new', component: SurveysCreateComponent }
 ];
