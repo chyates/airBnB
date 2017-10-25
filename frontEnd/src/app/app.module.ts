@@ -1,12 +1,14 @@
 // Module imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
 
 // Component imports
 import { AppComponent } from './app.component';
+import { LogRegComponent } from './log-reg/log-reg.component';
+import { NgDateRangePickerModule } from 'ng-daterangepicker';
 import { LoginRegComponent } from './login-reg/login-reg.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InnerSearchComponent } from './inner-search/inner-search.component';
@@ -20,13 +22,13 @@ import { InnerSearchMapComponent } from './inner-search/inner-search-map/inner-s
 import { InnerSearchListingsComponent } from './inner-search/inner-search-listings/inner-search-listings.component';
 import { GuestDashComponent } from './user-dash/guest-dash/guest-dash.component';
 import { HostDashComponent } from './user-dash/host-dash/host-dash.component';
-import { MessagesComponent } from './user-dash/messages/messages.component';
+import { ConversationsComponent } from './user-dash/conversations/conversations.component';
 import { GuestDashInnerNavComponent } from './user-dash/guest-dash/guest-dash-inner-nav/guest-dash-inner-nav.component';
 import { GuestDashEditProfileComponent } from './user-dash/guest-dash/guest-dash-edit-profile/guest-dash-edit-profile.component';
 import { HostDashEditProfileComponent } from './user-dash/host-dash/host-dash-edit-profile/host-dash-edit-profile.component';
 import { HostDashInnerNavComponent } from './user-dash/host-dash/host-dash-inner-nav/host-dash-inner-nav.component';
-import { MessageFilterComponent } from './user-dash/messages/message-filter/message-filter.component';
-import { MessageInboxComponent } from './user-dash/messages/message-inbox/message-inbox.component';
+import { ConversationFilterComponent } from './user-dash/conversations/conversation-filter/conversation-filter.component';
+import { ConversationInboxComponent } from './user-dash/conversations/conversation-inbox/conversation-inbox.component';
 import { ProfileInfoRightComponent } from './public-profile/profile-info-right/profile-info-right.component';
 import { ProfileInfoMainComponent } from './public-profile/profile-info-main/profile-info-main.component';
 import { ListingComponent } from './listing/listing.component';
@@ -36,6 +38,7 @@ import { ListingInfoNavComponent } from './listing/listing-info-nav/listing-info
 import { ListingInfoComponent } from './listing/listing-info/listing-info.component';
 
 // Service Imports
+import {ApiService} from './api.service'
 import { GoogleApiService } from './google-api.service';
 import { LocalApiService } from './local-api.service';
 // Google Maps Stuff
@@ -46,6 +49,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
+    LogRegComponent,
     LoginRegComponent,
     LandingPageComponent,
     InnerSearchComponent,
@@ -59,13 +63,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     InnerSearchListingsComponent,
     GuestDashComponent,
     HostDashComponent,
-    MessagesComponent,
+    ConversationsComponent,
     GuestDashInnerNavComponent,
     GuestDashEditProfileComponent,
     HostDashEditProfileComponent,
     HostDashInnerNavComponent,
-    MessageFilterComponent,
-    MessageInboxComponent,
+    ConversationFilterComponent,
+    ConversationInboxComponent,
     ProfileInfoRightComponent,
     ProfileInfoMainComponent,
     ListingComponent,
@@ -81,11 +85,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     }),
     BrowserModule,
     AppRoutingModule,
-    HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    HttpModule,
+    ReactiveFormsModule,
+    NgDateRangePickerModule
   ],
-  providers: [GoogleApiService, LocalApiService],
+  providers: [GoogleApiService, LocalApiService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

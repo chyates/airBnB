@@ -1,8 +1,9 @@
 export class User {
-    public firstName: string = "";
-    public lastName: string = "";
-    public email: string = "";
-    public password: string ="";
-    public confirmPassword: string = "";
-    public birthday: Date = null;
+    public first_name: String = '';
+    public last_name: String = '';
+    public email: String = '';
+    public password: String = '';
+    public confirmPassword: String = '';
+    public phone: String = '';
 }
+
