@@ -1,0 +1,82 @@
+#where, #guests
+{
+    height: 49px;
+}
+
+*
+{
+    color: grey;
+}
+
+.col
+{
+    padding: 0px;
+}
+
+.card-img-top
+{
+    width: 318px;
+    height: 212px;
+}
+
+#logregbut
+{
+    height: 45px;
+}
+
+#cards
+{
+    display: inline-block;
+    width: 100%;
+    height: 25%;
+    padding-left: 4%;
+}
+
+.card
+{
+    display: inline-block;
+    margin-right: 10px;
+    
+    
+}
+#footer
+{
+    background-color: rgba(255, 255, 255, 0.911);
+}
+
+#overlay
+{
+    background-image: url("https://www.myvrhost.com/wp-content/uploads/2015/12/Airbnb-new-logo-2014-1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 388px 155px;
+    text-align: center;
+}
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+  }
+  
+  /* style glyph */
+  .inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    margin-top: 8px;
+    margin-right: 3px;
+    pointer-events: none;
+  }
+  
+  /* align glyph */
+  .left-addon .glyphicon  { left:  0px;}
+  .right-addon .glyphicon { right: 0px;}
+  
+  /* add padding  */
+  .left-addon input  { padding-left:  30px; }
+  .right-addon input { padding-right: 30px; }
+  
+  
+  
+  body {
+    margin: 10px;
+  }

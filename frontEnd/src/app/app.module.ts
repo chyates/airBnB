@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LogRegComponent } from './log-reg/log-reg.component';
 import { ApiService } from './api.service';
-
+import { NgDateRangePickerModule } from 'ng-daterangepicker';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { ApiService } from './api.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgDateRangePickerModule
   ],
   providers: [
     ApiService
