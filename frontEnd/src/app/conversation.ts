@@ -1,4 +1,4 @@
-export class Message {
+export class Conversation {
     public subject: string = "";
     public content: string = "";
 }

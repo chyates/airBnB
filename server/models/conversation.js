@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var MessageSchema = new mongoose.Schema({
+var ConversationSchema = new mongoose.Schema({
     _guest: { type: Schema.Types.ObjectId, ref: 'User' },
     _listing: { type: Schema.Types.ObjectId, ref: 'Listing' },
     messageList: [{
@@ -13,4 +13,4 @@ var MessageSchema = new mongoose.Schema({
     }]
 });
 
-mongoose.model('Message', MessageSchema);
+mongoose.model('Conversation', ConversationSchema);

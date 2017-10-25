@@ -18,13 +18,13 @@ import { InnerSearchMapComponent } from './inner-search/inner-search-map/inner-s
 import { InnerSearchListingsComponent } from './inner-search/inner-search-listings/inner-search-listings.component';
 import { GuestDashComponent } from './user-dash/guest-dash/guest-dash.component';
 import { HostDashComponent } from './user-dash/host-dash/host-dash.component';
-import { MessagesComponent } from './user-dash/messages/messages.component';
+import { ConversationsComponent } from './user-dash/conversations/conversations.component';
 import { GuestDashInnerNavComponent } from './user-dash/guest-dash/guest-dash-inner-nav/guest-dash-inner-nav.component';
 import { GuestDashEditProfileComponent } from './user-dash/guest-dash/guest-dash-edit-profile/guest-dash-edit-profile.component';
 import { HostDashEditProfileComponent } from './user-dash/host-dash/host-dash-edit-profile/host-dash-edit-profile.component';
 import { HostDashInnerNavComponent } from './user-dash/host-dash/host-dash-inner-nav/host-dash-inner-nav.component';
-import { MessageFilterComponent } from './user-dash/messages/message-filter/message-filter.component';
-import { MessageInboxComponent } from './user-dash/messages/message-inbox/message-inbox.component';
+import { ConversationFilterComponent } from './user-dash/conversations/conversation-filter/conversation-filter.component';
+import { ConversationInboxComponent } from './user-dash/conversations/conversation-inbox/conversation-inbox.component';
 import { ProfileInfoRightComponent } from './public-profile/profile-info-right/profile-info-right.component';
 import { ProfileInfoMainComponent } from './public-profile/profile-info-main/profile-info-main.component';
 import { ListingComponent } from './listing/listing.component';

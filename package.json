@@ -1,8 +1,8 @@
 {
-  "name": "bicycles",
+  "name": "airBNB",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,8 +18,5 @@
     "mongoose": "^4.11.3",
     "mongoose-unique-validator": "^1.0.6",
     "ng-daterangepicker": "^0.2.0"
-  },
-  "devDependencies": {
-    "@angular/cli": "^1.2.1"
   }
 }

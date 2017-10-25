@@ -5,3 +5,5 @@ export class User {
     public password: String = '';
     public confirmPassword: String = '';
     public phone: String = '';
+}
+
