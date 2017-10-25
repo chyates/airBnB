@@ -4,5 +4,5 @@ export class User {
     public email: string = "";
     public password: string ="";
     public confirmPassword: string = "";
-    public birthday: Date = null;
+    public phoneNum: Number = null;
 }

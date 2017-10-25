@@ -10,7 +10,7 @@ var ListingSchema = new mongoose.Schema({
     rating: { type: Number },
     _host: { type: Schema.Types.ObjectId, ref: 'User' },
     _location: { type: Schema.Types.ObjectId, ref: 'Location' },
-    messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
+    conversations: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
     reservations: [{ type: Schema.Types.ObjectId, ref: 'Reservation'}],
     reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 }, {timestamps: true});

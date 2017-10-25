@@ -5,6 +5,7 @@ var ReviewSchema = new mongoose.Schema({
     title: { type: String, required: true },
     content: { type: String, required: true },
     helpfulVotes: { type: Number },
+    dateLeft: { type: Date },
     _guest: { type: Schema.Types.ObjectId, ref: 'User' },
     _listing: { type: Schema.Types.ObjectId, ref: 'Listing' },
 }, {timestamps: true});
