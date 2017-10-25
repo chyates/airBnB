@@ -1,3 +1,6 @@
+import { MapsAPILoader } from '@agm/core';
+import {} from '@types/googlemaps';
+import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import { LocalApiService } from './local-api.service';

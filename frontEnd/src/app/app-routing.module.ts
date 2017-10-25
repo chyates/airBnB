@@ -34,6 +34,12 @@ import { ListingInfoNavComponent } from './listing/listing-info-nav/listing-info
 import { ListingInfoComponent } from './listing/listing-info/listing-info.component';
 
 const routes: Routes = [
+  // { path: '', pathMatch: 'full', component: AppComponent },
+  { path: 'test', component: InnerSearchComponent,
+  children: [{ path: 'map', component: InnerSearchMapComponent },{ path: 'listing', component: InnerSearchListingsComponent }]  
+},
+  // { path: 'surveys/:id', component: SurveysOneComponent },
+  // { path: 'new', component: SurveysCreateComponent }
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LogRegComponent },
   { path: 'test', component: InnerSearchComponent },

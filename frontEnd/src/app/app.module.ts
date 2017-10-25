@@ -38,9 +38,13 @@ import { ListingInfoNavComponent } from './listing/listing-info-nav/listing-info
 import { ListingInfoComponent } from './listing/listing-info/listing-info.component';
 
 // Service Imports
+import {ApiService} from './api.service'
 import { GoogleApiService } from './google-api.service';
 import { LocalApiService } from './local-api.service';
-import { ApiService } from './api.service';
+// Google Maps Stuff
+import { AgmCoreModule } from '@agm/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -75,10 +79,15 @@ import { ApiService } from './api.service';
     ListingInfoComponent
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDCVcnQjMNJVY5DI_nQXsRsYJMGYs0VqYA',
+      libraries: ["places"]
+    }),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     NgDateRangePickerModule
   ],
   providers: [GoogleApiService, LocalApiService, ApiService],
