@@ -75,7 +75,7 @@
                
                 <div class="col-sm-4">
                  <p style="color: red" *ngIf='!firstName.valid && (firstName.dirty || firstName.touched)'>*First name is required</p>
-                  <input type="text" name="fname" required [(ngModel)]="ruser.first_name" #firstName="ngModel" class="form-control form-control-lg" placeholder="First Name">
+                  <input type="text" name="fname" required [(ngModel)]="ruser.firstName" #firstName="ngModel" class="form-control form-control-lg" placeholder="First Name">
                   
                 </div>
               </div>
@@ -85,7 +85,7 @@
               
                 <div class="col-sm-4">
                   <p style="color: red"  *ngIf='!lastName.valid && (lastName.dirty || lastName.touched)'>*Last name is required</p>
-                  <input type="text" name="lname" required [(ngModel)]="ruser.last_name" #lastName="ngModel" class="form-control form-control-lg" placeholder="Last Name">
+                  <input type="text" name="lname" required [(ngModel)]="ruser.lastName" #lastName="ngModel" class="form-control form-control-lg" placeholder="Last Name">
                 </div>
               </div>
               

@@ -4,11 +4,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import { NgDateRangePickerModule } from 'ng-daterangepicker';
 
 // Component imports
 import { AppComponent } from './app.component';
 import { LogRegComponent } from './log-reg/log-reg.component';
-import { NgDateRangePickerModule } from 'ng-daterangepicker';
+
 import { LoginRegComponent } from './login-reg/login-reg.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InnerSearchComponent } from './inner-search/inner-search.component';

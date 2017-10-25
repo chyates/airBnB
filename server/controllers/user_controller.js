@@ -8,10 +8,14 @@ mongoose.Promise = global.Promise;
 module.exports = {
     register: (req, res, next) => {
         let u = new User(req.body);
+        u.messages = [];
+        u.reservations = [];
+        u.listings = [];
+        u.reviews = [];
+        u.userLevel = false;
         u.save()
             .then((user) => {
-                req.session.name = user.first_name;
-                req.session.user_id = user._id;
+                req.session.user = user
                 res.json(true);
             })
             .catch((err) => { res.status(409).json(err) });
@@ -28,8 +32,7 @@ module.exports = {
                     res.status(402).json({ error: "Password is incorrect" });
                 }
                 else {
-                    req.session.name = user.first_name;
-                    req.session.user_id = user._id;
+                    req.session.user = user;
                     res.json(true);
                 }
             })
@@ -45,10 +48,8 @@ module.exports = {
             
     },
     current: (req, res, next) => {
-        if (req.session.user_id) {
-            let curr = {};
-            curr.id = req.session.user_id;
-            curr.name = req.session.name;
+        if (req.session.user) {
+            let currentUser = req.session.user
             res.json(curr);
         }
         else {
