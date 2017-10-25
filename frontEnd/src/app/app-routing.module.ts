@@ -1,6 +1,7 @@
 // Module Imports
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LogRegComponent } from './log-reg/log-reg.component';
 
 // Component Imports
 import { AppComponent } from './app.component';
@@ -33,10 +34,10 @@ import { ListingInfoNavComponent } from './listing/listing-info-nav/listing-info
 import { ListingInfoComponent } from './listing/listing-info/listing-info.component';
 
 const routes: Routes = [
-  // { path: '', pathMatch: 'full', component: AppComponent },
-  { path: 'test', component: InnerSearchMapComponent},
-  // { path: 'surveys/:id', component: SurveysOneComponent },
-  // { path: 'new', component: SurveysCreateComponent }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LogRegComponent },
+  { path: 'test', component: InnerSearchComponent },
+  { path: 'dashboard', redirectTo: '/homes', pathMatch: 'full' }
 ];
 
 @NgModule({

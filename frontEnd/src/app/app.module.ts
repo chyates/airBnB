@@ -1,12 +1,14 @@
 // Module imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
 
 // Component imports
 import { AppComponent } from './app.component';
+import { LogRegComponent } from './log-reg/log-reg.component';
+import { NgDateRangePickerModule } from 'ng-daterangepicker';
 import { LoginRegComponent } from './login-reg/login-reg.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InnerSearchComponent } from './inner-search/inner-search.component';
@@ -38,10 +40,12 @@ import { ListingInfoComponent } from './listing/listing-info/listing-info.compon
 // Service Imports
 import { GoogleApiService } from './google-api.service';
 import { LocalApiService } from './local-api.service';
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LogRegComponent,
     LoginRegComponent,
     LandingPageComponent,
     InnerSearchComponent,
@@ -73,10 +77,11 @@ import { LocalApiService } from './local-api.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpModule,
-    FormsModule
+    NgDateRangePickerModule
   ],
-  providers: [GoogleApiService, LocalApiService],
+  providers: [GoogleApiService, LocalApiService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

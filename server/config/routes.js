@@ -1,3 +1,5 @@
+// const users = require('../controllers/user_controller.js');
+
 // Require statments
 var mongoose = require('mongoose');
 var listings = require('../controllers/listings.js');
