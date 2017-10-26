@@ -1,0 +1,60 @@
+#listings-instant-book {
+    width: 400px;
+    height: 260px;
+    border: 1px solid black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+}
+
+hr {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.instant-book-form {
+    margin: 10px;
+}
+
+h3 {
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+}
+
+#check-in {
+    display: inline-block;
+    vertical-align: top;
+    width: 130px;
+    margin-left: 2px;
+    padding: 8px;
+}
+
+#check-out {
+    display: inline-block;
+    vertical-align: top;
+    width: 130px;
+    margin-left: 2px;
+    padding: 8px;
+}
+
+span {
+    display: inline-block;
+    vertical-align: top;
+    width: 130px;
+}
+
+#guest-select {
+    width: 295px;
+    margin-left: 2px;
+    padding: 8px;
+}
+
+#guest-number {
+    width: 295px;
+}
+
+#form-submit {
+    width: 130px;
+    margin: 0px 0px 10px 110px;
+    padding: 8px;
+}

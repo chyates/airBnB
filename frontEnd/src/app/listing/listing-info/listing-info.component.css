@@ -1,0 +1,116 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+}
+
+#header-logo {
+    width: 85px;
+    height: 55px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#top-search {
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 15px;
+}
+
+#search-submit {
+    color: white;
+    background-color: white;
+    border: none;
+}
+
+#quick-links {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 650px;
+}
+
+.container {
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px 5px 5px 100px;
+}
+
+.listing-header {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#listing-photo {
+    width: 100%
+}
+
+#main-content-listing {
+    width: 600px;
+    margin-left: 30px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#listings-instant-book {
+    display: inline-block;
+    vertical-align: top;
+    width: 350px;
+    height: 260px;
+    margin-left: 70px;
+    margin-top: 20px;
+    border: 1px solid black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+}
+
+#listings-instant-book hr {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.instant-book-form {
+    margin: 10px;
+}
+
+#listings-instant-book h3 {
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+}
+
+#check-in {
+    display: inline-block;
+    vertical-align: top;
+    width: 130px;
+    margin-left: 2px;
+    padding: 8px;
+}
+
+#check-out {
+    display: inline-block;
+    vertical-align: top;
+    width: 130px;
+    margin-left: 2px;
+    padding: 8px;
+}
+
+span {
+    display: inline-block;
+    vertical-align: top;
+    width: 130px;
+}
+
+#guest-select {
+    width: 295px;
+    margin-left: 2px;
+    padding: 8px;
+}
+
+#guest-number {
+    width: 295px;
+}
+
+#form-submit {
+    width: 130px;
+    margin: 0px 0px 10px 110px;
+    padding: 8px;
+}

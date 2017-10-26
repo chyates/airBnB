@@ -21,14 +21,14 @@ export class AppComponent {
   loggedIn;
 
   ngOnInit() {
-    this._localService.currentUser()
-    .then(user => {
-      if (user.firstName) {
-        this.loggedIn = true;
-      } else {
-        this.loggedIn = false;
-      }
-    })
+    // this._localService.currentUser()
+    // .then(user => {
+    //   if (user.firstName) {
+    //     this.loggedIn = true;
+    //   } else {
+    //     this.loggedIn = false;
+    //   }
+    // })
   }
 
   logout() {

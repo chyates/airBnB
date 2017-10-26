@@ -1,0 +1,23 @@
+#user-forms{
+    width: 90%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#reg-form{
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+}
+
+#log-form{
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+}
+
+#user-forms h3{
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+}

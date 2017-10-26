@@ -6,4 +6,6 @@
     <input type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
   </div>
 </div>
+<p *ngIf="currentUser">First name: </p>
+{{currentUser.firstName}}
 <router-outlet></router-outlet>

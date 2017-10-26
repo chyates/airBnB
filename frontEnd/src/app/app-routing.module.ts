@@ -1,11 +1,10 @@
 // Module Imports
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LogRegComponent } from './log-reg/log-reg.component';
 
 // Component Imports
 import { AppComponent } from './app.component';
-import { LoginRegComponent } from './login-reg/login-reg.component';
+import { LogRegComponent } from './log-reg/log-reg.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InnerSearchComponent } from './inner-search/inner-search.component';
 import { UserDashComponent } from './user-dash/user-dash.component';
@@ -35,15 +34,16 @@ import { ListingInfoComponent } from './listing/listing-info/listing-info.compon
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', component: AppComponent },
-  { path: 'test', component: InnerSearchComponent,
-  children: [{ path: 'map', component: InnerSearchMapComponent },{ path: 'listing', component: InnerSearchListingsComponent }]  
-},
-  // { path: 'surveys/:id', component: SurveysOneComponent },
-  // { path: 'new', component: SurveysCreateComponent }
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'test', component: InnerSearchComponent, children: [
+    { path: 'map', component: InnerSearchMapComponent },
+    { path: 'listing', component: InnerSearchListingsComponent } 
+  ]},
+  { path: '', pathMatch: 'full', component: LandingPageComponent  },
   { path: 'login', component: LogRegComponent },
   { path: 'test', component: InnerSearchComponent },
-  { path: 'dashboard', redirectTo: '/homes', pathMatch: 'full' }
+  { path: 'homes', component: LandingPageComponent },
+  { path: 'dashboard', component: ListingInfoComponent },
+  { path: 'account', component: UserDashComponent },
 ];
 
 @NgModule({

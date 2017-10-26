@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var ConversationSchema = new mongoose.Schema({
     _guest: { type: Schema.Types.ObjectId, ref: 'User' },
     _listing: { type: Schema.Types.ObjectId, ref: 'Listing' },
+    host: { type: Schema.Types.ObjectId, ref: 'User' },
     messageList: [{
         subject: { type: String },
         content: { type: String },

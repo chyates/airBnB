@@ -9,8 +9,6 @@ import { NgDateRangePickerModule } from 'ng-daterangepicker';
 // Component imports
 import { AppComponent } from './app.component';
 import { LogRegComponent } from './log-reg/log-reg.component';
-
-import { LoginRegComponent } from './login-reg/login-reg.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { InnerSearchComponent } from './inner-search/inner-search.component';
 import { UserDashComponent } from './user-dash/user-dash.component';
@@ -39,9 +37,9 @@ import { ListingInfoNavComponent } from './listing/listing-info-nav/listing-info
 import { ListingInfoComponent } from './listing/listing-info/listing-info.component';
 
 // Service Imports
-import {ApiService} from './api.service'
 import { GoogleApiService } from './google-api.service';
 import { LocalApiService } from './local-api.service';
+
 // Google Maps Stuff
 import { AgmCoreModule } from '@agm/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -51,7 +49,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     LogRegComponent,
-    LoginRegComponent,
     LandingPageComponent,
     InnerSearchComponent,
     UserDashComponent,
@@ -91,7 +88,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     NgDateRangePickerModule
   ],
-  providers: [GoogleApiService, LocalApiService, ApiService],
+  providers: [GoogleApiService, LocalApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

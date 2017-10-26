@@ -24,7 +24,7 @@ module.exports = function (app) {
 
     // Users
     app.get('/api/showUser', function(req, res){
-        users.getCurrent(req, res);
+        users.current(req, res);
     })
 
     app.get('/api/logout', function(req, res){
@@ -47,6 +47,19 @@ module.exports = function (app) {
 
     app.get('/api/currentUser/reservations/:id', function(req, res) {
         reservations.find(req, res);
+    })
+
+    //Conversations
+    app.get('/api/currentUser/inbox/guest', function(req, res){
+        conversations.showGuest(req, res);
+    })
+
+    app.get('/api/currentUser/inbox/host', function(req, res) {
+        conversations.showHost(req, res);
+    })
+
+    app.get('/api/currentUser/inbox/:id', function(req, res){
+        conversations.find(req, res);
     })
 
     // -----------------
@@ -98,11 +111,17 @@ module.exports = function (app) {
     })
 
     // Conversations
-    // app.post('/api/currentUser/listings/:id/newMessage', function(req, res))
+    app.post('/api/currentUser/listings/:id/guestMessage', function(req, res){
+        conversations.createAsGuest(req, res);
+    })
+
+    app.post('/api/currentUser/listings/:id/hostMessage', function(req, res){
+        conversations.createAsGuest(req, res);
+    })
 
     // Catch-all route
-    app.all('*', (req, res, next) => {
-        res.sendFile(path.resolve('./frontend/dist/index.html'));
-    })
+    // app.all("*", (req, res, next) => {
+    //     res.sendFile(path.resolve("./frontEnd/dist/index.html"));
+    // })
 
 }

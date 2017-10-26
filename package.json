@@ -10,22 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.1",
-    "express-session": "^1.15.6",
-    "moment": "^2.19.1",
-    "mongoose": "^4.12.1"
-=======
-    "angular-telephone-filter": "^1.0.2",
+    "mongoose": "^4.12.1",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
-    "mongoose": "^4.11.3",
+    "moment": "^2.19.1",
+    "angular-telephone-filter": "^1.0.2",
     "mongoose-unique-validator": "^1.0.6",
     "ng-daterangepicker": "^0.2.0"
->>>>>>> upstream/master
   }
 }

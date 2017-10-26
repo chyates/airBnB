@@ -89,13 +89,13 @@ export class LocalApiService {
     .toPromise();
   }
 
-  viewAll() {
+  viewAllReserves() {
     return this._http.get('/api/currentUser/reservations/all')
     .map(response => response.json())
     .toPromise();
   }
 
-  viewOne(id){
+  viewOneReserve(id){
     return this._http.get(`/api/currentUser/reservations/${id}`)
     .map(response => response.json())
     .toPromise();
@@ -109,10 +109,34 @@ export class LocalApiService {
   }
   
   // Conversation functions: create (send), viewAll, viewOne, delete
-  sendMessage(id, message) {
-    return this._http.post(`/api/currentUser/listings/${id}/newMessage`, message)
+  // **CREATE FUNCTIONS NEED HELLA TESTING**
+  sendGuestMessage(id, message) {
+    return this._http.post(`/api/currentUser/listings/${id}/guestMessage`, message)
     .map(response => response.json())
     .toPromise();
   }
 
+  sendHostMessage(id, message) {
+    return this._http.post(`/api/currentUser/listings/${id}/hostMessage`, message)
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  viewAllGuest(){
+    return this._http.get('/api/currentUser/inbox/guest')
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  viewAllHost(){
+    return this._http.get('/api/currentUser/inbox/host')
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  findOneMessage(id){
+    return this._http.get(`/api/currentUser/inbox/${id}`)
+    .map(response => response.json())
+    .toPromise();
+  }
 }

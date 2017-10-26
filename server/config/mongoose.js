@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
 
-mongoose.connect('mongodb://localhost/airbnb', {useMongoClient: true});
+// mongoose.connect('mongodb://localhost/airbnb', {useMongoClient: true});
 
 mongoose.connect('mongodb://localhost/airbnb');
 const models_path = path.join(__dirname, '../models');

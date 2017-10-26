@@ -1,3 +1,83 @@
-<p>
-  listing-info works!
-</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="listing-info.component.css"> -->
+  <title>Listing Info</title>
+</head>
+
+<body>
+  <div class="listing-header">
+    <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
+    <form id="top-search">
+      <input type="text" name="search" placeholder="Search">
+      <input id="search-submit" type="submit" value="search">
+    </form>
+    <p id="quick-links"><a>Discover hosting</a> | <a [routerLink]="['/account']">Trips</a> | <a>Messages</a> | <a>Help</a></p>
+  </div>
+  
+
+  <div class="container">
+    <img id="listing-photo" src="http://www.hotelsgilitrawangan.com/wp-content/uploads/2017/05/Bumbangku-Beach-Cottage-exterior.jpg">
+
+    <div id="main-info">
+      <div id="main-content-listing">
+        <p><a>Overview</a> &#9679; <a>Reviews</a> &#9679; <a>The Host</a> &#9679; <a>Location</a></p>
+        <h2>Hector Cave House</h2>
+        <p>Hector Cave House, carved into the unique caldera cliff for more than 250 years, was originally used as a wine cellar.Then
+          It became a family owned house, which then opened its doors to share its unique character to travelers from around
+          the world.</p>
+        <hr>
+        <h3>176 Reviews</h3>
+        <p>Really amazing place to stay! My wife and I enjoyed every part of our stay at Giannis's place. Dana and Dimitri were
+            also amazing, they helped us with our luggage, gave great recommendations, and helped with anything we needed. The
+            place has incredible views, location and was extremely comfortable. We'll be back for sure, and will be staying at
+            any of Giannis's places. Thanks for the amazing stay Giannis!</p>
+            <p>We loved our stay at the cave house. The location and the house itself are both incredible and Giannis is a very welcoming host. He even helped us set up some activities and tours while on the island and provided a fantastic list of recommendations. Can't wait to come back!</p>
+            <hr>
+            <h3>Hosted by Giannis</h3>
+            <p>Hi there, I am Giannis, I grew up in Athens and after studying and working abroad (UK and Switzerland) for 5 years,I
+              decided to come back in Greece and work for a family business. In 1998 my parents visited Santorini Island and they
+              fell in love with Oia village where they bought those picturesque cave houses… Since then all about my summer vacations
+              is to lay back at that terrace and admire the spectacular view. Traveling is to share… There is no better way of
+              doing this, other than sharing the experience with other travelers. Of course I will not lose any chance to discover
+              unique destinations like Santorini around the world… </p>
+            <hr>
+            <h3>Location</h3>
+            <p> Giannis’s home is located in Oia, South Aegean, Greece. Hector Cave house is situated in a very convenient location,
+                right on the main path of Oia traditional settlement. Within walking distance, visitors can reach all the highlights
+                of Oia and wonder around picturesque shops, cozy restaurants and romantic caldera-view cafes. Also, the house lies
+                a few steps from the old castle and the best viewing spot for the famous Oia sunset. Although close to local activity,
+                the house provides peacefulness and privacy, allowing guests to relax and enjoy the marvelous view from the terrace.</p>
+      </div>
+      <div id="listings-instant-book">
+        <h3>Listing price</h3>
+        <hr>
+        <form class="instant-book-form">
+          <div id="check-in">
+            <span>Check in:</span><br><input type="date" name="startDate" placeholder="mm/dd/yyyy"><br>
+          </div>
+
+          <div id="check-out">
+            <span>Check out:</span><br><input type="date" name="endDate" placeholder="mm/dd/yyyy"><br>
+          </div><br><br>
+
+          <div id="guest-select">
+            Guests: <br><select id="guest-number" name="amtGuests">
+              <option value="1">1 guest</option>
+              <option value="2">2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+            </select>
+          </div> <br>
+
+          <input id="form-submit" type="submit" value="Book">
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

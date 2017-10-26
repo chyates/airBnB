@@ -1,3 +1,25 @@
-<p>
-  listing-instant-book works!
-</p>
+<head>
+    <!-- <link rel="stylesheet" type="text/css" href="listing-instant-book.component.css"> -->
+</head>
+
+<div id="listings-instant-book">
+  <h3>Listing price</h3>
+  <hr>
+  <form class="instant-book-form">
+    <div id="check-in">
+      <span>Check in:</span><br><input type="date" name="startDate" placeholder="mm/dd/yyyy"><br>
+    </div>
+    <div id="check-out">
+      <span>Check out:</span><br><input type="date" name="endDate" placeholder="mm/dd/yyyy"><br>
+    </div><br><br>
+    <div id="guest-select">
+      Guests: <br><select id="guest-number" name="amtGuests">
+        <option value="1">1 guest</option>
+        <option value="2">2 guests</option>
+        <option value="3">3 guests</option>
+        <option value="4">4 guests</option>
+      </select>
+    </div> <br>
+    <input id="form-submit" type="submit" value="Book">
+  </form>
+</div>
