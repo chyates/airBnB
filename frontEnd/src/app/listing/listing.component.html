@@ -1,5 +1,32 @@
-<!-- Quick Links go in here! -->
+<div class="listing-header">
+    <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
+    <form id="top-search">
+      <input type="text" name="search" placeholder="Search">
+      <input id="search-submit" type="submit" value="search">
+    </form>
+    <p id="quick-links"><a [routerLink]="['/account']">Trips</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
+  </div>
 
-<p>
-  listing works!
-</p>
+  <div class="container">
+
+    <table class="table table-responsive-striped">
+      <thead>
+        <tr>
+          <th>Listing Title</th>
+          <th>Listing Description</th>
+          <th>Listing Location</th>
+          <th>Listing Price</th>
+          <th>Listing Room Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of allListings">
+          <td><a [routerLink]="[item._id]">{{ item.title }}</a></td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.location }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.roomType }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

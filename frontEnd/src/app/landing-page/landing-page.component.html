@@ -34,7 +34,7 @@
 <div id="user-forms" *ngIf="logForm === true">
     <div id="reg-form">
     <h3>Register:</h3>
-    <form #userForm="ngForm" (submit)="validateReg()">
+    <form #regForm="ngForm" (submit)="validateReg()">
         First Name: <input type="text"
         name="firstName"
         required
@@ -91,7 +91,7 @@
     <br><br>
     <div id="log-form" >
         <h3>Login:</h3>
-        <form #userForm="ngForm" (submit)="validateLogin()">
+        <form #logForm="ngForm" (submit)="validateLogin()">
             Email: <input type="logEmail"
             name="email"
             [(ngModel)]="user.email"

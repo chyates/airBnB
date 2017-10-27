@@ -1,87 +1,59 @@
-import { Component,ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { } from 'googlemaps';
-import { MapsAPILoader } from '@agm/core';
+// import { Component, OnInit } from '@angular/core';
+// import { MapsAPILoader } from '@agm/core';
+// import { } from '@types/googlemaps';
+// import { ViewChild, ElementRef, NgZone } from '@angular/core';
+// import { User } from '../../user'
+// import { LocalApiService } from '../../local-api.service';
+// import { Router } from '@angular/router';
 
+// @Component({
+//   selector: 'app-inner-search',
+//   templateUrl: './inner-search.component.html',
+//   styleUrls: ['./inner-search.component.css']
+// })
+// export class InnerSearchMapComponent implements OnInit {
 
-@Component({
-  selector: 'my-app',
-  styles: [`
-    agm-map {
-      height: 600px;
-      width: 700px;
-    }
-  `],
-  template: `
-    <div class="container">
-      <h1>Your Location:</h1>
-      <div class="form-group">
-        <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
-      </div><br><br>
-      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-      </agm-map>
-    </div>
-  `
-})
-export class InnerSearchMapComponent implements OnInit {
+//   @ViewChild('search') public searchElement: ElementRef;
 
-  public latitude: number;
-  public longitude: number;
-  public searchControl: FormControl;
-  public zoom: number;
+//   constructor(
+//     private mapsAPILoader: MapsAPILoader, 
+//     private ngZone: NgZone,
+//     private _localService: LocalApiService,
+//     private _router: Router) { }
 
-  @ViewChild("search")
-  public searchElementRef: ElementRef;
+//   ngOnInit() {
+//     this.mapsAPILoader.load().then(
+//       () => {
+//         let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ["(cities)"] });
 
-  constructor(
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
-  ) {}
+//         autocomplete.addListener("place_changed", () => {
+//           this.ngZone.run(() => {
+//             let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+//             if (place.geometry === undefined || place.geometry === null) {
+//               return;
+//             }
+//           });
+//         });
+//       }
+//     );
+//     this.getCurrentUser();
+//   }
 
-  ngOnInit() {
-    //set google maps defaults
-    this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+//   currentUser = new User();
+//   loggedIn;
+  
+//   getCurrentUser(){
+//     this._localService.currentUser()
+//     .then(data => {
+//       if (data === {}) {
+//         console.log("No current user");
+//       } else {
+//         console.log("Raw data:", data);
+//         this.currentUser = data.user;
+//         console.log("Current user information:", this.currentUser);
+//         this.loggedIn = true;
+//       }
+//     })
+//   }
 
-    //create search FormControl
-    this.searchControl = new FormControl();
-
-    //set current position
-    this.setCurrentPosition();
-
-    //load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["(cities)"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-
-          //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
-        });
-      });
-    });
-  }
-
-  private setCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
-  }
-}
+// }

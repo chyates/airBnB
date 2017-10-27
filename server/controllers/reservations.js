@@ -10,7 +10,7 @@ module.exports = {
                 startDate: req.body.startDate,
                 endDate: req.body.endDate,
                 amtGuests: req.body.amtGuests,
-                _booker: req.session.currentUser._id
+                _booker: req.session.user._id
             });
             newReserve._listing = listing._id;
             listing.reservations.push(newReserve);
@@ -67,7 +67,7 @@ module.exports = {
     },
 
     show: function(req, res) {
-        Reservation.find({_booker: req.session.currentUser}, function(err, reservations){
+        Reservation.find({_booker: req.session.user}, function(err, reservations){
             if (err){
                 res.json({error: err});
             } else {

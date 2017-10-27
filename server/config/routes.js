@@ -3,7 +3,7 @@
 // Require statments
 var mongoose = require('mongoose');
 var listings = require('../controllers/listings.js');
-var locations = require('../controllers/locations.js');
+// var locations = require('../controllers/locations.js');
 var conversations = require('../controllers/conversations.js');
 var reservations = require('../controllers/reservations.js');
 var reviews = require('../controllers/reviews.js');
@@ -11,7 +11,7 @@ var users = require('../controllers/users.js');
 
 // Model imports
 var Listing = mongoose.model('Listing');
-var Location = mongoose.model('Location');
+// var Location = mongoose.model('Location');
 var Conversation = mongoose.model('Conversation');
 var Reservation = mongoose.model('Reservation');
 var Review = mongoose.model('Review');
@@ -33,6 +33,10 @@ module.exports = function (app) {
 
     // Listings
     app.get('/api/currentUser/listings', function(req, res){
+        listings.findAll(req, res);
+    })
+
+    app.get('/api/currentUser/hostListings', function(req, res){
         listings.findAllUser(req, res);
     })
 

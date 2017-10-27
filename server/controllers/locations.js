@@ -1,2 +1,2 @@
-var mongoose = require('mongoose');
-var Location = mongoose.model('Location');
+// var mongoose = require('mongoose');
+// var Location = mongoose.model('Location');

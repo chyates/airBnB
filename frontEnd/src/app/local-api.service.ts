@@ -58,6 +58,12 @@ export class LocalApiService {
     .toPromise();
   }
 
+  findAllUserListings(){
+    return this._http.get('/api/currentUser/hostListings')
+    .map(response => response.json())
+    .toPromise();
+  }
+
   findOneListing(id){
     return this._http.get(`/api/currentUser/listing/${id}`)
     .map(response => response.json())

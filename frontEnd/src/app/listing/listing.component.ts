@@ -19,16 +19,41 @@ export class ListingComponent implements OnInit {
   ngOnInit() {
     this._route.params.subscribe(params => params['id']);
     this._route.params.subscribe(params => this.currentListing(params['id']));
+    this.getCurrentUser();
+    this.getAllListings();
   }
 
 
   hostId;
+  allListings;
+  currentUser;
+  thisListing;
 
   currentListing(id){
     this._localService.findOneListing(id)
-    .then(data => {this.hostId = data.listing._host});
+    .then(data => {
+      this.hostId = data.listing._host,
+      this.thisListing = data.listing
+    });
+  }
+
+  
+  getCurrentUser(){
+    this._localService.currentUser()
+    .then(data => {
+      if (data === {}) {
+        console.log("No current user");
+      } else {
+        console.log("Current user:", data.user);
+        this.currentUser = data.user;
+      }
+    })
+  }
+
+  getAllListings(){
+    this._localService.findAllListings()
+    .then(data => this.allListings = data.listings);
   }
 }
 
-// Functionalities to work on in components:
-// ALL OF THEM
+

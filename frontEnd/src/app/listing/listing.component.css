@@ -1,0 +1,36 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+}
+
+#header-logo {
+    width: 85px;
+    height: 55px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#top-search {
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 15px;
+}
+
+#search-submit {
+    color: white;
+    background-color: white;
+    border: none;
+}
+
+#quick-links {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 650px;
+    margin-top: 10px;
+}
+
+.container {
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px 15px 15px 15px;
+}

@@ -1,4 +1,15 @@
-<p>
-  Eric, test here!
-  <p *ngIf="loggedIn === true">Made it to inner map search. {{ currentUser | json }}</p>
-</p>
+<div class="container">
+    <h1>Your Location:</h1>
+    <div class="form-group">
+      <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+    </div><br><br>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+    <!-- <div id='locationphotos' name='samplephotos' *ngFor='let photo of photos'> -->
+      <div name='eat' *ngFor='let rest of restaurants'>
+        <!-- <a href="{{rest.photos[0].photo_reference}}"></a> -->
+        <h2>{{rest.name}}</h2>
+        <h4>Address: {{rest.vinicity}}</h4>
+      </div>
+  </div>

@@ -1,4 +1,9 @@
-img {
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+}
+
+#header-logo {
     width: 85px;
     height: 55px;
     display: inline-block;
@@ -8,12 +13,20 @@ img {
 #top-search {
     display: inline-block;
     vertical-align: bottom;
+    margin: 15px;
+}
+
+#search-submit {
+    color: white;
+    background-color: white;
+    border: none;
 }
 
 #quick-links {
     display: inline-block;
     vertical-align: top;
     margin-left: 650px;
+    margin-top: 10px;
 }
 
 .user-dash-nav {
@@ -62,7 +75,7 @@ img {
     margin: 15px 5px 5px 230px;
 }
 
-#main-content-user-profile {
+.form-edit {
     display: inline-block;
     vertical-align: top;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

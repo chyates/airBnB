@@ -6,59 +6,68 @@ const session = require('express-session');
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    register: (req, res, next) => {
-        let u = new User(req.body);
-        u.messages = [];
-        u.reservations = [];
-        u.listings = [];
-        u.reviews = [];
-        u.userLevel = false;
-        u.save()
-            .then((user) => {
-                req.session.user = user
-                res.json(true);
-            })
-            .catch((err) => { res.status(409).json(err) });
-    },
+    // register: function(req, res) {
+    //     User.find({email: req.body.email}, function(error, user) {
+    //         if (user.length >= 1) {
+    //             res.json({
+    //                 error: 'An account with that email already exists.  Please use a different email.',
+    //                 loggedIn: false
+    //             });
+    //         } else {
+    //             var newUser = new User({
+    //                 firstName: req.body.firstName,
+    //                 lastName: req.body.lastName,
+    //                 email: req.body.email,
+    //                 password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
+    //                 userLevel: false,
+    //             });
+    //             newUser.reviews = [];
+    //             newUser.listings = [];
+    //             newUser.reservations = [];
+    //             newUser.conversations = [];
+    //             newUser.save(function(err, user) {
+    //                 if (err) {
+    //                     console.log("new user:", newUser);
+    //                     console.log("Didn't find user and couldn't save");
+    //                     res.json({error: err, loggedIn: false});
+    //                 } else {
+    //                     console.log("Made it to save");
+    //                     req.session.user = newUser;
+    //                     console.log(req.session.user);
+    //                     res.json({user: newUser, loggedIn: true});
+    //                 }
+    //             });
+    //         }
+    //     });
+    // },
 
     login: function (req, res) {
         User.find({email: req.body.email}, function(err, user){
             if (err) {
+                // console.log("In login function:", err);
                 res.json(err);
             } else {
+                console.log(user);
                 if (user.length > 0) {
                     if (bcrypt.compareSync(req.body.password, user[0].password)) {
+                        // console.log(req.body.password);
+                        // console.log(user[0].password);
                         req.session.user = user[0];
-                        console.log(req.session.user);
+                        // console.log(req.session.user);
                         res.json({user: user[0], loggedIn: true});
                     } else {
+                        // console.log("body password:", req.body.password);
+                        // console.log("DB password", user[0].password);
+                        // console.log(user);
                         res.json({error: 'Password is incorrect. Please try again', loggedIn: false});
                     }
                 } else {
+                    console.log("Couldn't find user", user);
                     res.json({error: 'Email not found, please register or try again',loggedIn: false});
                 }
             }
         });
     },
-
-    // login: function(req, res) {
-    //     User.find({email: req.body.email}, function (err, user) {
-    //         if (err) {
-    //             res.json({error: err});
-    //         } else {
-    //             if (user.length > 0) {
-    //                 if (bcrypt.compareSync(req.body.password, user[0].password)) {
-    //                     req.session.currentUser = user[0];
-    //                     res.json({user: user, loggedIn: true});
-    //                 } else {
-    //                     res.json({error: 'Password is incorrect.', loggedIn: false});
-    //                 }
-    //             } else {
-    //                 res.json({error: 'Email not found. Please try again or register to continue.', loggedIn: false})
-    //             }
-    //         }
-    //     });
-    // },
 
     logout: (req, res, next) => {
         req.session.destroy();
@@ -102,12 +111,40 @@ module.exports = {
         });
     },
 
+register: function (req, res) {
+    var newUser = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
+        userLevel: false,
+    });
+    newUser.reviews = [];
+    newUser.listings = [];
+    newUser.reservations = [];
+    newUser.conversations = [];
+    newUser.save(function(err, user) {
+        if (err) {
+            console.log(err);
+            console.log("new user:", newUser);
+            console.log("Didn't find user and couldn't save");
+            res.json({error: err, loggedIn: false});
+        } else {
+            console.log("Made it to save");
+            req.session.user = user;
+            console.log(req.session.user);
+            res.json({user: newUser, loggedIn: true});
+        }
+            });
+        },
+
     current: function(req, res){
+        // console.log("In current user function:", req.session.user);
         if (req.session.user){
-            let currentUser = req.session.user;
+            var currentUser = req.session.user;
             res.json({user: currentUser});
         } else {
-            res.json({});
+            res.json({error: "Could not find user", 'user': req.session.user});
         }
     }
 }

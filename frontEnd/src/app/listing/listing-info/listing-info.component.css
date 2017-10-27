@@ -26,6 +26,7 @@
     display: inline-block;
     vertical-align: top;
     margin-left: 650px;
+    margin-top: 10px;
 }
 
 .container {
@@ -68,13 +69,13 @@
 }
 
 .instant-book-form {
-    margin: 10px;
+    margin: 5px;
 }
 
 #listings-instant-book h3 {
     display: inline-block;
     vertical-align: top;
-    margin: 10px;
+    margin: 10px 10px 7px 10px;
 }
 
 #check-in {
@@ -82,7 +83,7 @@
     vertical-align: top;
     width: 130px;
     margin-left: 2px;
-    padding: 8px;
+    padding: 4px;
 }
 
 #check-out {
@@ -90,7 +91,7 @@
     vertical-align: top;
     width: 130px;
     margin-left: 2px;
-    padding: 8px;
+    padding: 4px;
 }
 
 span {
@@ -102,7 +103,7 @@ span {
 #guest-select {
     width: 295px;
     margin-left: 2px;
-    padding: 8px;
+    padding: 4px;
 }
 
 #guest-number {
@@ -112,5 +113,5 @@ span {
 #form-submit {
     width: 130px;
     margin: 0px 0px 10px 110px;
-    padding: 8px;
+    /* padding: 4px; */
 }

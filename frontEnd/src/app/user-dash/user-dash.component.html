@@ -2,31 +2,31 @@
     <!-- <link rel="stylesheet" type="text/css" href="user-dash.component.css"> -->
   </head>
   
-  <img src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
+  <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
   <form id="top-search">
     <input type="text" name="search" placeholder="Search">
   </form>
-  <p id="quick-links"><a>Discover hosting</a> | <a>Trips</a> | <a>Messages</a> | <a>Help</a></p>
+  <p id="quick-links"><a [routerLink]="['/account']">Trips</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
   <!-- Dash Nav goes in here! -->
   <div class="user-dash-nav">
-    <button id="nav-button-first">Inbox</button>
-    <button>Your Trips</button>
-    <button>Your Listings</button>
-    <button>Profile</button>
-    <button>Account</button>
+    <button (click)="switchInbox()" id="nav-button-first">Inbox</button>
+    <button (click)="switchTrips()">Your Trips</button>
+    <button (click)="switchListingDiv()">Your Listings</button>
+    <button (click)="switchProfile()">Profile</button>
+    <button (click)="switchInbox()">Account</button>
   </div>
   
   <div id="inner-content">
     <div id="inner-nav">
-      <a class="inner-link">Book Trip</a>
+      <a (click)="switchAddListingDiv()"class="inner-link">Your Listings</a>
       <a class="inner-link">Past Trips</a>
       <a class="inner-link">Upcoming Trips</a>
       <a class="inner-link">Invite Friends</a>
     </div>
       
-    <div id="main-content-user-profile">
+    <div *ngIf="profile === true" class="form-edit">
       <h4>Required</h4>
-      <form id="edit-profile-user">
+      <form >
         First Name: <input type="text" name="firstName" placeholder="Update your first name"><br><br>
         Last Name: <input type="text" name="lastName" placeholder="Update your last name"><br><br>
         Email: <input type="email" name="firstName" placeholder="Update your email"><br><br>
@@ -37,17 +37,95 @@
       </form>
     </div>
   
-    <!-- <div id="main-content-add-listing">
-
+    <div *ngIf="addListing === true" class="form-edit">
+      <form (submit)="createListing()">
+        Name: <input type="text"
+        name="title"
+        required
+        [(ngModel)]="listing.title"
+        #title = "ngModel"
+        placeholder="Enter a title"><br><br>
+        Description: <br><textarea cols="50" rows="7"
+        name="description"
+        required
+        [(ngModel)]="listing.description"
+        #description = "ngModel"
+        placeholder="Maximum 250 characters"></textarea><br><br>
+        Room type (house, apt, private): <input type="text"
+        name="roomType"required
+        [(ngModel)]="listing.roomType"
+        #roomType = "ngModel"
+        placeholder="House? Private room?"><br><br>
+        Number of beds: <select
+        name="amountBeds"
+        required
+        [(ngModel)]="listing.amountBeds"
+        #amountBeds = "ngModel">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select><br><br>
+        Price: $<input type="number"
+        name="price"
+        required
+        [(ngModel)]="listing.price"
+        #price = "ngModel"><br><br>
+        Location: <input type="text"
+        name="location"
+        required
+        [(ngModel)]="listing.location"
+        #location = "ngModel"
+        placeholder="Enter location"><br><br>
+        Image URL: <input type="text" 
+        name="image"
+        [(ngModel)] = "listing.image"
+        #image = "ngModel"
+        placeholder="Enter image URL"><br><br>
+        <input type="submit" value="Create Listing">
+      </form>
     </div>
-    <div id="main-content-add-reservation">
 
+    <div *ngIf="listingDiv === true" class="form-edit">
+      <table *ngIf="listings !== {}"class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Reservations</th>
+            <th>Reviews</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listings">
+            <td>{{ item.title }}</td>
+            <td>{{ item.location }}</td>
+            <td>{{ item.reservations }}</td>
+            <td>{{ item.reviews }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 *ngIf="listings === {}">No Listings!</h2>
+      <h3 *ngIf="listings === {}">Use the righthand navigation to add one</h3>
     </div>
-    <div id="main-content-listings">
 
+    <div *ngIf="trips === true" class="form-edit">
+      <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Number of Guests</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of reservations">
+              <td>{{ item.startDate | date: 'mediumDate' }}</td>
+              <td>{{ item.endDate | date: 'mediumDate' }}</td>
+              <td>{{ item.amtGuests }}</td>
+            </tr>
+          </tbody>
+        </table>
     </div>
-    <div id="main-content-reservations">
-
-    </div> -->
   </div>
   
