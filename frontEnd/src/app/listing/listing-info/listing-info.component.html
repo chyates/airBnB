@@ -15,7 +15,7 @@
       <input type="text" name="search" placeholder="Search">
       <input id="search-submit" type="submit" value="search">
     </form>
-    <p id="quick-links"><a [routerLink]="['/account']">Trips</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
+    <p id="quick-links"><a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
   </div>
 
   <div class="container">
@@ -27,14 +27,15 @@
         <h2>{{ thisListing.title }}</h2>
         <p>{{ thisListing.description }}</p>
         <hr>
-        <h3>176 Reviews</h3>
+        <h3>Reviews:</h3>
         <p>{{ thisListing.reviews }}</p>
+        <a id="review-add" (click)="toggleReview()">Add Review</a>
         <hr>
         <h3>Location: </h3>
         <p>{{ thisListing.location }}</p>
       </div>
       <div id="listings-instant-book">
-        <h3>${{ thisListing.price }}</h3>
+        <h3>{{ thisListing.price | currency:'USD':true }}/night</h3>
         <hr>
         <form class="instant-book-form" (submit)="bookTrip()">
           <div id="check-in">
@@ -71,6 +72,23 @@
         </form>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="addReview === true">
+    <form (submit)="createReview()">
+      Title: <input type="text"
+      name="title"
+      required
+      [(ngModel)]="review.title"
+      #title = "ngModel"><br><br>
+      Content: <br><textarea cols="40" rows="7"
+      name="content"
+      required
+      [(ngModel)]="review.content"
+      #content = "ngModel"
+      placeholder="How was your experience?"></textarea><br><br>
+      <input type="submit" value="Leave review">
+    </form>
   </div>
 </body>
 

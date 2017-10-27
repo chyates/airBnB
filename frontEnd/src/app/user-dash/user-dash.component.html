@@ -1,31 +1,37 @@
-<head>
-    <!-- <link rel="stylesheet" type="text/css" href="user-dash.component.css"> -->
-  </head>
-  
+<div class="listing-header">
   <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
-  <form id="top-search">
-    <input type="text" name="search" placeholder="Search">
+  <form id="top-search" #searchForm="ngForm" (submit)="searchByLocation()">
+    <input type="text"
+    name="location"
+    required
+    [(ngModel)]="listing.location"
+    #location = "ngModel"
+    placeholder="Search">
+    <input id="search-submit" type="submit" >
   </form>
-  <p id="quick-links"><a [routerLink]="['/account']">Trips</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
-  <!-- Dash Nav goes in here! -->
+  <p id="quick-links"><a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
+</div>
+
   <div class="user-dash-nav">
     <button (click)="switchInbox()" id="nav-button-first">Inbox</button>
     <button (click)="switchTrips()">Your Trips</button>
     <button (click)="switchListingDiv()">Your Listings</button>
     <button (click)="switchProfile()">Profile</button>
-    <button (click)="switchInbox()">Account</button>
+    <button (click)="switchInbox()">Settings</button>
   </div>
   
   <div id="inner-content">
     <div id="inner-nav">
-      <a (click)="switchAddListingDiv()"class="inner-link">Your Listings</a>
+      <a (click)="switchAddListingDiv()"class="inner-link">Add Listing</a>
       <a class="inner-link">Past Trips</a>
       <a class="inner-link">Upcoming Trips</a>
       <a class="inner-link">Invite Friends</a>
     </div>
       
     <div *ngIf="profile === true" class="form-edit">
-      <h4>Required</h4>
+      <h3>Edit Profile</h3>
+      <h4>Required Information:</h4>
+      <hr>
       <form >
         First Name: <input type="text" name="firstName" placeholder="Update your first name"><br><br>
         Last Name: <input type="text" name="lastName" placeholder="Update your last name"><br><br>
@@ -38,6 +44,8 @@
     </div>
   
     <div *ngIf="addListing === true" class="form-edit">
+      <h3>Add Listing</h3>
+      <hr>
       <form (submit)="createListing()">
         Name: <input type="text"
         name="title"
@@ -87,7 +95,9 @@
     </div>
 
     <div *ngIf="listingDiv === true" class="form-edit">
-      <table *ngIf="listings !== {}"class="table table-responsive">
+      <h3>Listings You've Posted</h3>
+      <hr>
+      <table class="table table-responsive">
         <thead>
           <tr>
             <th>Title</th>
@@ -105,14 +115,15 @@
           </tr>
         </tbody>
       </table>
-      <h2 *ngIf="listings === {}">No Listings!</h2>
-      <h3 *ngIf="listings === {}">Use the righthand navigation to add one</h3>
     </div>
 
     <div *ngIf="trips === true" class="form-edit">
+      <h3>Trips You've Booked</h3>
+      <hr>
       <table class="table table-responsive">
           <thead>
             <tr>
+              <th>Title</th>
               <th>Start Date</th>
               <th>End Date</th>
               <th>Number of Guests</th>
@@ -120,6 +131,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of reservations">
+              <td>{{ item._listing.title }}</td>
               <td>{{ item.startDate | date: 'mediumDate' }}</td>
               <td>{{ item.endDate | date: 'mediumDate' }}</td>
               <td>{{ item.amtGuests }}</td>

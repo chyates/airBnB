@@ -17,10 +17,11 @@ export class ListingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._route.params.subscribe(params => params['id']);
+    // this._route.params.subscribe(params => params['id']);
     this._route.params.subscribe(params => this.currentListing(params['id']));
     this.getCurrentUser();
     this.getAllListings();
+    this.getRecentListings();
   }
 
 
@@ -28,6 +29,9 @@ export class ListingComponent implements OnInit {
   allListings;
   currentUser;
   thisListing;
+  searchListings = [];
+  listing = new Listing();
+  recentListings;
 
   currentListing(id){
     this._localService.findOneListing(id)
@@ -53,6 +57,16 @@ export class ListingComponent implements OnInit {
   getAllListings(){
     this._localService.findAllListings()
     .then(data => this.allListings = data.listings);
+  }
+
+  searchByLocation(){
+    this._localService.searchListings(this.listing.location)
+    .then(data => this.searchListings = data.listings);
+  }
+
+  getRecentListings(){
+    this._localService.findRecentlyCreated()
+    .then(data => this.recentListings = data.listings);
   }
 }
 

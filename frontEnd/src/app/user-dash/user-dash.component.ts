@@ -22,8 +22,10 @@ export class UserDashComponent implements OnInit {
   trips;
   addListing;
 
+  location;
   listing = new Listing();
   listings = [];
+  searchListings = [];
 
   reservation = new Reservation();
   reservations = [];
@@ -86,9 +88,16 @@ export class UserDashComponent implements OnInit {
     })
   }
 
+  searchByLocation(){
+    this._localService.searchListings(this.listing.location)
+    .then(data => this.searchListings = data.listings);
+  }
+
   getUserListings(){
     this._localService.findAllUserListings()
-    .then(data => this.listings = data.listings);
+    .then(data => {
+      this.listings = data.listings,
+      console.log("Made it to component, inside get user listings function")});
   }
 
   getUserReserves(){

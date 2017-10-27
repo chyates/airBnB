@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalApiService } from '../../local-api.service';
 import { Router, ActivatedRoute} from '@angular/router';
 import { Listing } from '../../listing'
+import { Review } from '../../review'
 import { User } from '../../user'
 import { Reservation } from '../../reservation'
 
@@ -30,6 +31,9 @@ export class ListingInfoComponent implements OnInit {
   hostId;
   listingId;
   reservation = new Reservation();
+  review =  new Review();
+  addReview = false;
+  allReviews;
 
   currentListing(id){
     this._localService.findOneListing(id)
@@ -55,5 +59,14 @@ export class ListingInfoComponent implements OnInit {
   bookTrip(){
     this._localService.createReserve(this.listingId, this.reservation)
     .then(data => this._router.navigateByUrl('/account'));
+  }
+
+  toggleReview(){
+    this.addReview = true;
+  }
+
+  createReview(){
+    this._localService.addReview(this.listingId, this.review)
+    .then(data => this.allReviews = data);
   }
 }

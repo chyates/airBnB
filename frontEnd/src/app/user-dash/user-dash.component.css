@@ -27,6 +27,7 @@
     vertical-align: top;
     margin-left: 650px;
     margin-top: 10px;
+    font-size: 14pt;
 }
 
 .user-dash-nav {
@@ -49,9 +50,9 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
     text-align: center;
-    font-size: 12pt;
+    font-size: 14pt;
     color: lightgrey;
-    width: 100px; 
+    width: 120px; 
     height: 30px;
     padding: 2px;
     margin-left: 40px;
@@ -59,7 +60,7 @@
 }
 
 #nav-button-first{
-    margin-left: 200px;
+    margin-left: 190px;
 }
 
 #inner-nav {
@@ -71,15 +72,24 @@
     display: block;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
-    font-size: 12pt;
+    font-size: 13pt;
     margin: 15px 5px 5px 230px;
 }
 
 .form-edit {
     display: inline-block;
+    width: 600px;
     vertical-align: top;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
-    font-size: 12pt;
-    margin: 2px 5px 5px 155px
+    font-size: 15pt;
+    margin: 2px 5px 5px 155px;
+    /* border: 1px dashed darkgrey; */
+}
+
+.form-edit form, .form-edit table {
+    border: 1px dashed darkgrey;
+    margin: 15px 15px 15px 5px;
+    padding: 15px;
+    width: 500px;
 }

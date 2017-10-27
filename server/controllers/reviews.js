@@ -9,7 +9,7 @@ module.exports = {
                 title: req.body.title,
                 content: req.body.content,
                 dateLeft: Date.now(),
-                _guest: req.session.currentUser._id
+                _guest: req.session.user._id
             });
             newReview._listing = listing._id;
             listing.reviews.push(newReview);

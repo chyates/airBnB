@@ -27,6 +27,7 @@
     vertical-align: top;
     margin-left: 650px;
     margin-top: 10px;
+    font-size: 14pt;
 }
 
 .container {
@@ -49,6 +50,10 @@
     margin-left: 30px;
     display: inline-block;
     vertical-align: top;
+}
+
+#main-content-listing p {
+    font-size: 14pt;
 }
 
 #listings-instant-book {

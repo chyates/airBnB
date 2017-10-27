@@ -58,6 +58,13 @@ export class LocalApiService {
     .toPromise();
   }
 
+  searchListings(location){
+    var city = {'location':location}
+    return this._http.post('/api/listings/search', city)
+    .map(response => response.json())
+    .toPromise();
+  }
+
   findAllUserListings(){
     return this._http.get('/api/currentUser/hostListings')
     .map(response => response.json())
@@ -66,6 +73,12 @@ export class LocalApiService {
 
   findOneListing(id){
     return this._http.get(`/api/currentUser/listing/${id}`)
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  findRecentlyCreated(){
+    return this._http.get('/api/listings/recent')
     .map(response => response.json())
     .toPromise();
   }

@@ -42,6 +42,7 @@ module.exports = {
     // },
 
     login: function (req, res) {
+        console.log("In login function: form body input is:", req.body);
         User.find({email: req.body.email}, function(err, user){
             if (err) {
                 // console.log("In login function:", err);

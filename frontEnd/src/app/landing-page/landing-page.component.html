@@ -93,15 +93,15 @@
         <h3>Login:</h3>
         <form #logForm="ngForm" (submit)="validateLogin()">
             Email: <input type="logEmail"
-            name="email"
+            name="logEmail"
             [(ngModel)]="user.email"
-            #email = "ngModel"
+            #logEmail = "ngModel"
             placeholder="Enter email"><br><br>
             
             Password: <input type="password"
-            name="password"
+            name="logPassword"
             [(ngModel)]="user.password"
-            #password = "ngModel"
+            #logPassword = "ngModel"
             placeholder="Enter password"><br><br>
             <input type="submit" value="Log In">
         </form>

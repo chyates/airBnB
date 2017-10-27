@@ -40,13 +40,17 @@ module.exports = function (app) {
         listings.findAllUser(req, res);
     })
 
+    app.get('/api/listings/recent', function(req, res){
+        listings.findRecent(req, res);
+    })
+
     app.get('/api/currentUser/listing/:id', function(req, res) {
         listings.findOne(req, res);
     })
 
     // Reservations
     app.get('/api/currentUser/reservations/all', function(req, res){
-        reservations.show(req, res);
+        reservations.show2(req, res);
     })
 
     app.get('/api/currentUser/reservations/:id', function(req, res) {
@@ -94,6 +98,10 @@ module.exports = function (app) {
 
     app.post('/api/currentUser/listings/:id/update', function(req, res){
         listings.update(req, res);
+    })
+
+    app.post('/api/listings/search', function(req, res){
+        listings.search(req, res);
     })
 
     // Reservations

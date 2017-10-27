@@ -40,8 +40,10 @@ module.exports = {
     },
 
     findAllUser: function(req, res) {
-        Listing.find({_user: req.session.user}, function(err, listings){
+        console.log("Inside find all user function");
+        Listing.find({_host: req.session.user}, function(err, listings){
             if (err){
+                console.log("In findAllUser, couldn't find any", err);
                 res.json({error: err});
             } else {
                 res.json({listings: listings});
@@ -50,6 +52,7 @@ module.exports = {
     },
 
     findAll: function(req, res) {
+        console.log("Inside find all listings function");
         Listing.find({}, function(err, listings){
             if (err){
                 console.log("Inside find all listings function, could not find any");
@@ -96,4 +99,27 @@ module.exports = {
             }
         });
     },
+
+    search: function(req, res){
+        console.log("Made it to user dash search function. Form input is:", req.body)
+        Listing.find({location: {$regex : req.body.location}}, function(err, listings){
+            if (err) {
+                console.log("Inside search function: could not find listings");
+            } else {
+                res.json({listings: listings});
+            }
+        })
+    },
+
+    findRecent: function(req, res){
+        console.log("Inside find recent listings function")
+        Listing.find({}, function (err, listings){
+            if (err) {
+                console.log("Inside find 3 most recent: could not find listings");
+            } else {
+                console.log(listings);
+                res.json({listings: listings})
+            }
+        }).sort({createdAt: -1}).limit(3);
+    }
 }

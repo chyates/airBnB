@@ -76,6 +76,19 @@ module.exports = {
         });
     },
 
+    show2: function(req, res){
+        Reservation.find({_booker: req.session.user})
+        .populate('_listing')
+        .exec(function(err, reservations){
+            if (err) {
+                console.log("Inside show2 function, could not populate listings of all reserves");
+            } else {
+                console.log(reservations);
+                res.json({reservations: reservations});
+            }
+        })
+    },
+
     find: function(req, res) {
         Reservation.findOne({_id: req.params.id})
         .populate('_booker').populate('_listing')
