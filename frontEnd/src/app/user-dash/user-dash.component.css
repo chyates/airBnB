@@ -78,7 +78,7 @@
 
 .form-edit {
     display: inline-block;
-    width: 600px;
+    width: 700px;
     vertical-align: top;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-decoration: none;
@@ -88,8 +88,8 @@
 }
 
 .form-edit form, .form-edit table {
-    border: 1px dashed darkgrey;
-    margin: 15px 15px 15px 5px;
+    /* border: 1px dashed darkgrey; */
+    margin: 5px 5px 5px 5px;
     padding: 15px;
-    width: 500px;
+    width: 700px;
 }

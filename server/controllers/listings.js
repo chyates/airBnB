@@ -52,7 +52,7 @@ module.exports = {
     },
 
     findAll: function(req, res) {
-        console.log("Inside find all listings function");
+        // console.log("Inside find all listings function");
         Listing.find({}, function(err, listings){
             if (err){
                 console.log("Inside find all listings function, could not find any");
@@ -63,14 +63,14 @@ module.exports = {
     },
 
     findOne: function(req, res){
-        console.log("Commented out first function!! Params from route:", req.params.id)
+        console.log("Req.params.id:", req.params.id)
         Listing.findById({_id: req.params.id})
         .populate('reviews')
         .exec(function (err, listing){
             if (err){
                 console.log("In findOne function, couldn't find listing");
             } else {
-                console.log("this should not hit!!!", listing);
+                console.log("success!", listing);
                 res.json({ listing: listing });
             }
         });

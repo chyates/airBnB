@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgDateRangePickerModule } from 'ng-daterangepicker';
 
 // Google Maps Stuff
-// import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // Component imports
@@ -76,10 +76,10 @@ import { LocalApiService } from './local-api.service';
     ListingInfoComponent
   ],
   imports: [
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyDCVcnQjMNJVY5DI_nQXsRsYJMGYs0VqYA',
-    //   libraries: ["places"]
-    // }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDCVcnQjMNJVY5DI_nQXsRsYJMGYs0VqYA',
+      libraries: ["places"]
+    }),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

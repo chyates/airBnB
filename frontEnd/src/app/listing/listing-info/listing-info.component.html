@@ -27,9 +27,12 @@
         <h2>{{ thisListing.title }}</h2>
         <p>{{ thisListing.description }}</p>
         <hr>
-        <h3>Reviews:</h3>
-        <p>{{ thisListing.reviews }}</p>
-        <a id="review-add" (click)="toggleReview()">Add Review</a>
+        <div *ngFor="let r of allReviews; let idx=index">
+          <h3>Reviews:</h3>
+          <h3>{{ r.title }}</h3>
+          <p>"{{ r.content }}"</p>
+          <a id="review-add" (click)="toggleReview()">Add Review</a>
+        </div>
         <hr>
         <h3>Location: </h3>
         <p>{{ thisListing.location }}</p>

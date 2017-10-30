@@ -70,6 +70,11 @@ module.exports = function (app) {
         conversations.find(req, res);
     })
 
+    // Reviews
+    app.get('/api/listings/:id/reviews', function(req, res){
+        reviews.show(req, res);
+    })
+
     // -----------------
     // - POST requests -
     // -----------------

@@ -126,6 +126,12 @@ export class LocalApiService {
     .map(response => response.json())
     .toPromise();
   }
+
+  findAllReviews(listingId) {
+    return this._http.get(`/api/listings/${listingId}/reviews`)
+    .map(response => response.json())
+    .toPromise();
+  }
   
   // Conversation functions: create (send), viewAll, viewOne, delete
   // **CREATE FUNCTIONS NEED HELLA TESTING**

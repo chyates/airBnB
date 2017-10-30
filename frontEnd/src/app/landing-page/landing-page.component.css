@@ -21,3 +21,25 @@
     vertical-align: top;
     width: 300px;
 }
+
+.mainsection{
+    display: inline-block;
+    vertical-align: top;
+} 
+#cards1{
+    display: inline-block;
+    vertical-align: top;
+    margin-left:20px;
+    
+}
+#locationmap{
+    margin-top: 50px;
+    margin-left:30px;
+    display: inline-block;
+    vertical-align: top;
+    width:25%;
+} 
+agm-map {
+    height: 750px;
+    
+  }
