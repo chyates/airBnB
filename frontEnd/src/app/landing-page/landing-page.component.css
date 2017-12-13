@@ -1,4 +1,4 @@
-#user-forms{
+/* #user-forms{
     width: 90%;
     display: inline-block;
     vertical-align: top;
@@ -42,4 +42,205 @@
 agm-map {
     height: 750px;
     
+  } */
+
+/* modal CSS */
+#regContainer, #logContainer{
+    margin-top: 3%;  
+}
+#login-form label, #register-form label {
+    font-size: 80%;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+.panel-login {
+    border-color: #ccc;
+     background-color: #f9f8f8;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+    text-align:center;
+}
+.panel-login>.panel-heading a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 28px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+    font-size: 34px;
+}
+.panel-login>.panel-heading hr{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    clear: both;
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+    background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+    height: 45px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+.panel-login input:hover, .panel-login input:focus {
+    outline:none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-color: #ccc;
+}
+.btn-login {
+    background-color:var(--orange);
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+    border-color: var(--orange);
+}
+.btn-login:hover, .btn-login:focus {
+    color: #fff;
+    background-color: var(--orange);
+    border-color: var(--orange);
+}
+.btn-register {
+    background-color: var(--orange);
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+    border-color: var(--orange);
+}
+.btn-register:hover, .btn-register:focus {
+    color: #fff;
+    background-color: var(--orange);
+    border-color: var(--orange);
+}
+
+.panel-heading a{
+    font-size: 48px;
+    color: rgb(6, 106, 117);
+    padding: 2px 0 10px 0;
+    font-family: 'FranchiseRegular','Arial Narrow',Arial,sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.panel-heading a{
+    background: -webkit-repeating-linear-gradient(-45deg, 
+    rgb(245, 97, 32) , 
+    rgb(247, 125, 45) 20px, 
+    rgb(250, 154, 58) 20px, 
+    rgb(252, 183, 71) 40px, 
+    rgb(255, 212, 84) 40px);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.navbar-color {
+    background-color:#3D9DB3;
+    color: #fff;
+    border-color: #2d92a9;
+}
+
+.modal-backdrop fade in { 
+    display: none;
+}
+
+/* navbar CSS */
+#header-logo {
+    width: 80px;
+    height: 60px;
+    opacity: 0.9;
+    /* background-color:#e9ecef; */
+    margin-left: 20rem;
+}
+
+/* recent listings CSS */
+#where, #guests {
+    height: 49px;
+}
+
+.col {
+    padding: 0px;
+}
+
+.card-img-top {
+    width: 318px;
+    height: 212px;
+}
+
+#cards {
+    display: inline-block;
+    width: 100%;
+    height: 25%;
+    padding-left: 4%;
+}
+
+.card {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    
+}
+
+#footer {
+    background-color: rgba(255, 255, 255, 0.911);
+}
+
+#overlay {
+    background-image: url("https://www.myvrhost.com/wp-content/uploads/2015/12/Airbnb-new-logo-2014-1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 388px 155px;
+    text-align: center;
+}
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+  
+/* style glyph */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    margin-top: 8px;
+    margin-right: 3px;
+    pointer-events: none;
+}
+  
+/* align glyph */
+.left-addon .glyphicon  { left:  0px;}
+  .right-addon .glyphicon { right: 0px;}
+  
+/* add padding  */
+.left-addon input  { 
+    padding-left:  30px; 
+}
+
+.right-addon input { 
+    padding-right: 30px; 
+}
+
+body {
+    margin: 10px;
   }

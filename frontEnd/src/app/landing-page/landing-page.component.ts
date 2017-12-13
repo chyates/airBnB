@@ -1,30 +1,24 @@
-import { Component,ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../user'
+import { User } from '../user';
+import { Listing } from '../listing';
 import { LocalApiService } from '../local-api.service';
 
 // Google maps
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
-import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
-import {GoogleApiService } from './../google-api.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { GoogleApiService } from './../google-api.service';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css',
-              '../app.component.css'],
+    '../app.component.css'],
 })
 export class LandingPageComponent implements OnInit {
-
-
-  loggedIn;
-  currentUser;
-  logForm;
-  user = new User();
-  logButton;
 
   // Google maps
   private googlePlaceId: any;
@@ -55,8 +49,9 @@ export class LandingPageComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private sanitizer: DomSanitizer,
-    private _googleapiService : GoogleApiService
-  ) { this.zoom = 4;
+    private _googleapiService: GoogleApiService
+  ) {
+  this.zoom = 4;
     this.latitude = 39.8282;
     this.longitude = -98.5795;
 
@@ -69,13 +64,13 @@ export class LandingPageComponent implements OnInit {
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: [ "(cities)" ]
+        types: ["(cities)"]
       });
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-          
+
 
           //verify result
           if (place.geometry === undefined || place.geometry === null) {
@@ -83,9 +78,9 @@ export class LandingPageComponent implements OnInit {
           }
 
           console.log(place);
-          
+
           //set latitude, longitude and zoom         
-          
+
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.zoom = 12;
@@ -96,94 +91,60 @@ export class LandingPageComponent implements OnInit {
           this.restaurants = [];
           this.experiences = [];
           this.listings = [];
-          this._googleapiService.getLocationids(this.latitude,this.longitude,this.radius,'restaurant')
-          .subscribe((location) => {
-              for(let alocation in location.results){
-                  this._googleapiService.getLocationdetails(location.results[alocation].place_id)
+          this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'restaurant')
+            .subscribe((location) => {
+              for (let alocation in location.results) {
+                this._googleapiService.getLocationdetails(location.results[alocation].place_id)
                   .subscribe((place) => {
-                    if(place.result.photos){
-                    if(place.result.photos[0].photo_reference != null && this.restaurants.length < 3 && place.result.rating >= 4.4 && place.result.types != 'lodging'){
-                      this.restaurants.push(place.result);
-                      console.log(place.result);
-                      this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='+place.result.photos[0].photo_reference+'&key='+this.apikey;
-                      this.restaurants[this.restaurants.length-1].photos[0].photo_reference = this.photolink;
-                    } 
-                  }              
-              })
-             }
-          })
-          this._googleapiService.getLocationids(this.latitude,this.longitude,this.radius,'lodging')
-          .subscribe((location) => {
-              for(let alocation in location.results){
-                  this._googleapiService.getLocationdetails(location.results[alocation].place_id)
-                  .subscribe((place) => {
-                    if(place.result.photos){
-                      if(place.result.photos[0].photo_reference != undefined && this.listings.length < 3 && place.result.rating >= 4.4){
-                        this.listings.push(place.result);
+                    if (place.result.photos) {
+                      if (place.result.photos[0].photo_reference != null && this.restaurants.length < 3 && place.result.rating >= 4.4 && place.result.types != 'lodging') {
+                        this.restaurants.push(place.result);
                         console.log(place.result);
-                        this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='+place.result.photos[0].photo_reference+'&key='+this.apikey;
-                        this.listings[this.listings.length-1].photos[0].photo_reference = this.photolink;
+                        this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
+                        this.restaurants[this.restaurants.length - 1].photos[0].photo_reference = this.photolink;
                       }
                     }
-            
-              })
-             }
-          })
-          this._googleapiService.getLocationids(this.latitude,this.longitude,this.radius,'night_club')
-          .subscribe((location) => {
-              for(let alocation in location.results){
-                  this._googleapiService.getLocationdetails(location.results[alocation].place_id)
+                  })
+              }
+            })
+          this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'lodging')
+            .subscribe((location) => {
+              for (let alocation in location.results) {
+                this._googleapiService.getLocationdetails(location.results[alocation].place_id)
                   .subscribe((place) => {
-                    if(place.result.photos){
-                    if(place.result.photos[0].photo_reference != null && this.experiences.length < 3 && place.result.rating >= 4.4){
-                      this.experiences.push(place.result);
-                      console.log(place.result);
-                      this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='+place.result.photos[0].photo_reference+'&key='+this.apikey;
-                      this.experiences[this.experiences.length-1].photos[0].photo_reference = this.photolink;
-                    } 
-                  }              
-              })
-             }
-          })         
+                    if (place.result.photos) {
+                      if (place.result.photos[0].photo_reference != undefined && this.listings.length < 3 && place.result.rating >= 4.4) {
+                        this.listings.push(place.result);
+                        console.log(place.result);
+                        this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
+                        this.listings[this.listings.length - 1].photos[0].photo_reference = this.photolink;
+                      }
+                    }
+
+                  })
+              }
+            })
+          this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'night_club')
+            .subscribe((location) => {
+              for (let alocation in location.results) {
+                this._googleapiService.getLocationdetails(location.results[alocation].place_id)
+                  .subscribe((place) => {
+                    if (place.result.photos) {
+                      if (place.result.photos[0].photo_reference != null && this.experiences.length < 3 && place.result.rating >= 4.4) {
+                        this.experiences.push(place.result);
+                        console.log(place.result);
+                        this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
+                        this.experiences[this.experiences.length - 1].photos[0].photo_reference = this.photolink;
+                      }
+                    }
+                  })
+              }
+            })
         });
       });
     });
   }
 
-  ngOnInit(
-  ) {
-  }
-
-  validateLogin() {
-    return this._localService.loginUser(this.user)
-    .then(data => {
-      if (data.loggedIn === true) {
-        this.currentUser = data.user;
-        this.loggedIn = true;
-        this.logButton = false;
-        this._router.navigateByUrl('listings');
-      } 
-      if (data.error){
-        console.log(data.error);
-        console.log("Login failed");
-      }
-    }).catch(err => console.log(err));
-  }
-
-  showLogReg(){
-    this.logForm = true;
-  }
-
-  validateReg() {
-    this._localService.registerUser(this.user)
-    .then(data => {
-      if (data.loggedIn === true) {
-        this.currentUser = data.user;
-        this.loggedIn = true;
-        this._router.navigateByUrl('listings');
-      }
-    }).catch(err => console.log(err));
-  }
   private setCurrentPosition() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -194,4 +155,47 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
+  ngOnInit(
+  ) {
+    this.getRecentListings();
+  }
+
+  // not Google API stuff
+
+  loggedIn;
+  currentUser;
+  user = new User();
+  logUser = new User();
+  recentListings; 
+
+  validateLogin() {
+    return this._localService.loginUser(this.user)
+      .then(data => {
+        if (data.loggedIn === true) {
+          this.currentUser = data.user;
+          this.loggedIn = true;
+          this._router.navigateByUrl('listings');
+        }
+        if (data.error) {
+          console.log(data.error);
+          console.log("Login failed");
+        }
+      }).catch(err => console.log(err));
+  }
+
+  validateReg() {
+    this._localService.registerUser(this.user)
+      .then(data => {
+        if (data.loggedIn === true) {
+          this.currentUser = data.user;
+          this.loggedIn = true;
+          this._router.navigateByUrl('listings');
+        }
+      }).catch(err => console.log(err));
+  }
+
+  getRecentListings(){
+    this._localService.findRecentlyCreated()
+    .then(data => this.recentListings = data.listings);
+  }
 }

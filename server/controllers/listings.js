@@ -5,7 +5,7 @@ var User = mongoose.model('User');
 module.exports = {
     create: function(req, res) {
         User.findById({_id: req.session.user._id}, function(err, user){
-            console.log(req.body)
+            // console.log(req.body)
             var newListing = new Listing({
                 title: req.body.title,
                 description: req.body.description,
@@ -40,10 +40,10 @@ module.exports = {
     },
 
     findAllUser: function(req, res) {
-        console.log("Inside find all user function");
+        // console.log("Inside find all user function");
         Listing.find({_host: req.session.user}, function(err, listings){
             if (err){
-                console.log("In findAllUser, couldn't find any", err);
+                // console.log("In findAllUser, couldn't find any", err);
                 res.json({error: err});
             } else {
                 res.json({listings: listings});
@@ -63,12 +63,12 @@ module.exports = {
     },
 
     findOne: function(req, res){
-        console.log("Req.params.id:", req.params.id)
+        // console.log("Req.params.id:", req.params.id)
         Listing.findById({_id: req.params.id})
         .populate('reviews')
         .exec(function (err, listing){
             if (err){
-                console.log("In findOne function, couldn't find listing");
+                // console.log("In findOne function, couldn't find listing");
             } else {
                 console.log("success!", listing);
                 res.json({ listing: listing });
@@ -101,7 +101,7 @@ module.exports = {
     },
 
     search: function(req, res){
-        console.log("Made it to user dash search function. Form input is:", req.body)
+        // console.log("Made it to user dash search function. Form input is:", req.body)
         Listing.find({location: {$regex : req.body.location}}, function(err, listings){
             if (err) {
                 console.log("Inside search function: could not find listings");
@@ -120,6 +120,6 @@ module.exports = {
                 console.log(listings);
                 res.json({listings: listings})
             }
-        }).sort({createdAt: -1}).limit(3);
+        }).sort({createdAt: -1}).limit(4);
     }
 }
