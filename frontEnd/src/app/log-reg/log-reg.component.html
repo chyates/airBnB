@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -8,143 +9,127 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog ">
-    <div class="modal-content">
-<!-- =============================================================================================================== -->
-
-      <div class="modal-header"> 
-          <img src="http://logok.org/wp-content/uploads/2014/07/airbnb-logo-belo-880x628.png"  class="d-inline-block align-top" width="110" height="78.5" alt="airbnb logo">
-        <h1 style="color:grey" lass="modal-title">Login to continue</h1>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-       
-      </div>
-<!-- =============================================================================================================== -->
-<!-- LOGIN -->
-<!-- =============================================================================================================== -->
-
-
-      <div class="modal-body">
-
-        <div class="container">
-          <div class="span6">
-            <div *ngIf="loginError">
-                  <p class="error" style="color: red">*{{loginError}}</p>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="regContainer" class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-3 mx-auto">
+                            <div class="panel panel-login p-3">
+                                <div class="panel-heading">
+                                    <div class="row mx-auto">
+                                        <div class="col-xs-6 mx-auto">
+                                            <a href="#" class="active" id="register-form-link">Register</a>
+                                        </div>
+                                        <div class="col-xs-6 mx-auto">
+                                            <a href="#" id="login-form-link">Login</a>
+                                        </div>
+                                    </div>
+                                    <hr class="mt-2 mb-3">
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form id="register-form" #regForm="ngForm" (submit)="register() role="form" style="display: block;">
+                                                <!-- registration form -->
+                                                <div class="form-group">
+                                                    First Name:
+                                                    <input type="text" 
+                                                    name="firstName" 
+                                                    required 
+                                                    minlength="2" 
+                                                    [(ngModel)]="logUser.firstName"
+                                                    #firstName="ngModel" placeholder="Enter your first name"><br><br>
+                                                    <li *ngIf="!firstName.untouched && firstName.errors?.required">First name is required</li>
+                                                    <li *ngIf="!firstName.errors?.required && firstName.errors?.minlength">First name must be more than 2 characters</li>
+                                                </div>
+                                                <div class="form-group">
+                                                    Last Name:
+                                                    <input type="text" 
+                                                    name="lastName" 
+                                                    required 
+                                                    minlength="2" 
+                                                    [(ngModel)]="logUser.lastName"
+                                                    #firstName="ngModel" placeholder="Enter your last name"><br><br>
+                                                    <li *ngIf="!lastName.untouched && firstName.errors?.required">Last name is required</li>
+                                                    <li *ngIf="!lastName.errors?.required && lastName.errors?.minlength">Last name must be more than 2 characters</li>
+                                                </div>
+                                                <div class="form-group">
+                                                    Email: <input type="email"
+                                                    name="email"
+                                                    required
+                                                    minlength="2"
+                                                    [(ngModel)]="user.email"
+                                                    #email = "ngModel"
+                                                    placeholder="Enter your email"><br><br>
+                                                    <li *ngIf="!email.untouched && email.errors?.required">Email is required</li>
+                                                    <li *ngIf="!email.errors?.required && email.errors?.minlength">Email must be more than 2 characters</li>
+                                                </div>
+                                                <div class="form-group">
+                                                    Password: <input type="password"
+                                                    name="password"
+                                                    required
+                                                    minlength="8"
+                                                    [(ngModel)]="user.password"
+                                                    #password = "ngModel"
+                                                    placeholder="Enter a password"><br><br>
+                                                    <li *ngIf="!password.untouched && password.errors?.required">Password is required</li>
+                                                    <li *ngIf="!password.errors?.required && password.errors?.minlength">Password must be more than 8 characters</li>
+                                                </div>
+                                                <div class="form-group">
+                                                    Confirm Password: <input type="password"
+                                                    name="confirmPassword"
+                                                    required
+                                                    [(ngModel)]="user.confirmPassword"
+                                                    #confirmPassword = "ngModel"
+                                                    placeholder="Confirm password"><br>
+                                                    <li *ngIf="!confirmPassword.untouched && confirmPassword.errors?.required">You must confirm your password</li>
+                                                    <li *ngIf="!confirmPassword.errors?.required && user.password !== user.confirmPassword">Passwords must match</li>
+                                                    <br>
+                                                </div>
+                                                    
+                                                <input type="submit" value="Register!">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 mx-auto">
+                                                            <input type="submit" name="register-submit" id="register-submit" tabindex="8" class="form-control btn btn-register" value="Register Now">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form id="login-form" #logForm="ngForm" (submit)="login()" role="form" style="display: none;">
+                                                <div class="form-group">
+                                                    Email: <input type="logEmail"
+                                                    name="email"
+                                                    placeholder="Enter email"><br><br>
+                                                </div>
+                                                <div class="form-group">
+                                                    Password: <input type="password"
+                                                    name="logPassword" 
+                                                    placeholder="Enter password"><br><br>
+                                                    <input type="submit" value="Log In">
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6 mx-auto">
+                                                            <input type="submit" name="login-submit" id="login-submit" tabindex="3" class="form-control btn btn-login" value="Log In"[disabled]="!loginForm.form.valid" class="btn btn-primary btn btn-danger">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="loginError">
+                                                    <li>{{ loginError }}</li>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <div class="login">
-              <h1 style="color:grey">Login</h1>
-              <form (submit)="validateLogin()" #loginForm="ngForm">
-                <div class="form-group row">
-                  <div class="col-sm-4">
-                    
-                    <input type="email" name="lemail" [(ngModel)]="luser.email" required class="form-control form-control-lg" placeholder="Email">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-sm-4">
-                    
-                    <input type="password" name="lpassword" [(ngModel)]="luser.password" required class="form-control form-control-lg" placeholder="Password">
-                  </div>
-                </div>
-
-                
-                <br>
-
-                <input type="submit" value="Log In" [disabled]="!loginForm.form.valid" class="btn btn-primary btn btn-danger">
-              </form>
-              
             </div>
-          </div>
         </div>
-<!-- =============================================================================================================== -->
-<!-- REGISTER -->
-<!-- =============================================================================================================== -->
-
-        <div class="container">
-          <div class="register">
-            <h1 style="color:grey">Register</h1>
-            <form (submit)="validateReg()" #regForm="ngForm">
-              <div *ngIf="regError">
-                <p style="color:red" class="error">*{{regError}}</p>
-              </div>
-
-
-              <div class="form-group row">  
-               
-                <div class="col-sm-4">
-                 <p style="color: red" *ngIf='!firstName.valid && (firstName.dirty || firstName.touched)'>*First name is required</p>
-                  <input type="text" name="fname" required [(ngModel)]="ruser.firstName" #firstName="ngModel" class="form-control form-control-lg" placeholder="First Name">
-                  
-                </div>
-              </div>
-              
-
-              <div class="form-group row">
-              
-                <div class="col-sm-4">
-                  <p style="color: red"  *ngIf='!lastName.valid && (lastName.dirty || lastName.touched)'>*Last name is required</p>
-                  <input type="text" name="lname" required [(ngModel)]="ruser.lastName" #lastName="ngModel" class="form-control form-control-lg" placeholder="Last Name">
-                </div>
-              </div>
-              
-
-              <div class="form-group row">
-                 
-                <div class="col-sm-4">
-                 <p style="color:red"   *ngIf='!remail.valid && (remail.dirty || remail.touched)'>*Email is not valid</p>
-                  <input type="email" name="remail" required pattern="^([A-Za-z0-9._\-]+)@([a-zA-Z0-9._\-]+)\.([a-zA-Z]+)$" [(ngModel)]="ruser.email"
-                    #remail="ngModel" class="form-control form-control-lg" placeholder="Em@il">
-                </div>
-              </div>
-              
-              
-
-              <div class="form-group row">
-               
-                <div class="col-sm-4">
-                  <p style="color: red"  *ngIf='!rpassword.valid && (rpassword.dirty || rpassword.touched)'>*Password Must be at least 8 characters</p>
-                  <input type="password" name="rpassword" required [(ngModel)]="ruser.password" #rpassword="ngModel" minlength="8" class="form-control form-control-lg"
-                    validateEqual="confirmPassword" reverse="true" placeholder="Password">
-                </div>
-              </div>
-              
-              
-
-              <div class="form-group row">
-               
-                <div class="col-sm-4">
-                   <p style="color: red"  *ngIf='!confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)'>*Passwords do not match</p>
-                  <input type="password" name="confirmPassword" [(ngModel)]="ruser.confirmPassword" #confirmPassword="ngModel" validateEqual="rpassword"
-                    reverse="false" class="form-control form-control-lg" placeholder="Confirm Password">
-                </div>
-              </div>
-              
-              <div class="form-group row">
-              <div class="col-sm-4">
-                <p style="color: red"  *ngIf='!phone.valid && (phone.dirty || phone.touched)'>*Phone number required</p>
-
-                 <input type="tel" name="phone" required [(ngModel)]="ruser.phone" #phone="ngModel" class="form-control bfh-phone" maxlength="10" placeholder="(555) 555-5555">
-             </div>
-           </div>
-              
-              
-
-              <input type="submit" value="Register" [disabled]="!regForm.form.valid" class="btn btn-primary btn btn-danger">
-            </form>
-          </div>
-        </div>
-      
-<!-- =============================================================================================================== -->
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-<!-- =============================================================================================================== -->
-      </div>
     </div>
-  </div>
-</div>
 </body>
-</html>

@@ -6,40 +6,40 @@ const session = require('express-session');
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    // register: function(req, res) {
-    //     User.find({email: req.body.email}, function(error, user) {
-    //         if (user.length >= 1) {
-    //             res.json({
-    //                 error: 'An account with that email already exists.  Please use a different email.',
-    //                 loggedIn: false
-    //             });
-    //         } else {
-    //             var newUser = new User({
-    //                 firstName: req.body.firstName,
-    //                 lastName: req.body.lastName,
-    //                 email: req.body.email,
-    //                 password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
-    //                 userLevel: false,
-    //             });
-    //             newUser.reviews = [];
-    //             newUser.listings = [];
-    //             newUser.reservations = [];
-    //             newUser.conversations = [];
-    //             newUser.save(function(err, user) {
-    //                 if (err) {
-    //                     console.log("new user:", newUser);
-    //                     console.log("Didn't find user and couldn't save");
-    //                     res.json({error: err, loggedIn: false});
-    //                 } else {
-    //                     console.log("Made it to save");
-    //                     req.session.user = newUser;
-    //                     console.log(req.session.user);
-    //                     res.json({user: newUser, loggedIn: true});
-    //                 }
-    //             });
-    //         }
-    //     });
-    // },
+    register: function(req, res) {
+        User.find({email: req.body.email}, function(error, user) {
+            if (user.length >= 1) {
+                res.json({
+                    error: 'An account with that email already exists.  Please use a different email.',
+                    loggedIn: false
+                });
+            } else {
+                var newUser = new User({
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
+                    userLevel: false,
+                });
+                newUser.reviews = [];
+                newUser.listings = [];
+                newUser.reservations = [];
+                newUser.conversations = [];
+                newUser.save(function(err, user) {
+                    if (err) {
+                        console.log("new user:", newUser);
+                        console.log("Didn't find user and couldn't save");
+                        res.json({error: err, loggedIn: false});
+                    } else {
+                        console.log("Made it to save");
+                        req.session.user = newUser;
+                        console.log(req.session.user);
+                        res.json({user: newUser, loggedIn: true});
+                    }
+                });
+            }
+        });
+    },
 
     login: function (req, res) {
         console.log("In login function: form body input is:", req.body);
@@ -112,32 +112,32 @@ module.exports = {
         });
     },
 
-register: function (req, res) {
-    var newUser = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
-        userLevel: false,
-    });
-    newUser.reviews = [];
-    newUser.listings = [];
-    newUser.reservations = [];
-    newUser.conversations = [];
-    newUser.save(function(err, user) {
-        if (err) {
-            console.log(err);
-            console.log("new user:", newUser);
-            console.log("Didn't find user and couldn't save");
-            res.json({error: err, loggedIn: false});
-        } else {
-            console.log("Made it to save");
-            req.session.user = user;
-            console.log(req.session.user);
-            res.json({user: newUser, loggedIn: true});
-        }
-            });
-        },
+// register: function (req, res) {
+//     var newUser = new User({
+//         firstName: req.body.firstName,
+//         lastName: req.body.lastName,
+//         email: req.body.email,
+//         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
+//         userLevel: false,
+//     });
+//     newUser.reviews = [];
+//     newUser.listings = [];
+//     newUser.reservations = [];
+//     newUser.conversations = [];
+//     newUser.save(function(err, user) {
+//         if (err) {
+//             console.log(err);
+//             console.log("new user:", newUser);
+//             console.log("Didn't find user and couldn't save");
+//             res.json({error: err, loggedIn: false});
+//         } else {
+//             console.log("Made it to save");
+//             req.session.user = user;
+//             console.log(req.session.user);
+//             res.json({user: newUser, loggedIn: true});
+//         }
+//             });
+//         },
 
     current: function(req, res){
         // console.log("In current user function:", req.session.user);

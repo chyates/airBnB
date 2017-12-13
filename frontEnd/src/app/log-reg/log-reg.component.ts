@@ -9,8 +9,8 @@ import { LocalApiService } from '../local-api.service';
   styleUrls: ['./log-reg.component.css']
 })
 export class LogRegComponent {
-  luser: User = new User();
-  ruser: User = new User();
+  logUser: User = new User();
+  regUser: User = new User();
   loginError: String;
   regError: String;
 
@@ -19,23 +19,39 @@ export class LogRegComponent {
     private _router: Router, 
   ) { }
 
+  // validateLogin() {
+  //   this._localService.loginUser(this.luser)
+  //     .then((user) => { this._router.navigate(['/homes']); })
+  //     .catch((err) => {
+  //       if (err.status == '401') {
+  //         this.loginError = "No user registered with that email.";
+  //       }
+  //       else if (err.status == '402') {
+  //         this.loginError = "Password is incorrect.";
+  //       }
+  //     })
+  // }
+
   validateLogin() {
-    this._localService.loginUser(this.luser)
-      .then((user) => { this._router.navigate(['/homes']); })
-      .catch((err) => {
-        if (err.status == '401') {
-          this.loginError = "No user registered with that email.";
-        }
-        else if (err.status == '402') {
-          this.loginError = "Password is incorrect.";
-        }
-      })
+    this._localService.loginUser(this.logUser)
+    .then(data => {
+      if(data.loggedIn === true) {
+        this._router.navigateByUrl('/homes');
+      } else {
+        this.loginError = data.error;
+      }
+    });
   }
 
   validateReg() {
-    this._localService.registerUser(this.ruser)
-      .then(() => { this._router.navigate(['/homes']); })
-      .catch((err) => { this.regError = "A user with that email already exists." });
+    this._localService.loginUser(this.regUser)
+    .then(data => {
+      if(data.loggedIn === true) {
+        this._router.navigateByUrl('/homes');
+      } else {
+        this.regError = data.error;
+      }
+    });
   }
 
 
