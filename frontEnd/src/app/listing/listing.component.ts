@@ -65,7 +65,7 @@ export class ListingComponent implements OnInit {
   }
 
   getRecentListings(){
-    this._localService.findRecentlyCreated()
+    this._localService.findRecentList()
     .then(data => this.recentListings = data.listings);
   }
 }

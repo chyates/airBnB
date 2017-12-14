@@ -1,38 +1,4 @@
-/* #user-forms{
-    width: 90%;
-    display: inline-block;
-    vertical-align: top;
-}
-
-#reg-form{
-    display: inline-block;
-    vertical-align: top;
-    width: 300px;
-}
-
-#log-form{
-    display: inline-block;
-    vertical-align: top;
-    width: 300px;
-}
-
-#user-forms h3{
-    display: inline-block;
-    vertical-align: top;
-    width: 300px;
-}
-
-.mainsection{
-    display: inline-block;
-    vertical-align: top;
-} 
-#cards1{
-    display: inline-block;
-    vertical-align: top;
-    margin-left:20px;
-    
-}
-#locationmap{
+/* #locationmap{
     margin-top: 50px;
     margin-left:30px;
     display: inline-block;
@@ -171,12 +137,16 @@ agm-map {
     height: 60px;
     opacity: 0.9;
     /* background-color:#e9ecef; */
-    margin-left: 20rem;
+    margin-left: 5rem;
 }
 
 /* recent listings CSS */
 #where, #guests {
     height: 49px;
+}
+
+#recent-listings-container {
+    margin: 1rem;
 }
 
 .col {
@@ -188,18 +158,19 @@ agm-map {
     height: 212px;
 }
 
-#cards {
+#cards1 {
     display: inline-block;
     width: 100%;
     height: 25%;
-    padding-left: 4%;
+    padding-left: 2%;
 }
 
 .card {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 20px;
-    
+    width: 20rem;
+
 }
 
 #footer {

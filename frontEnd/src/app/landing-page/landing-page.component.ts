@@ -20,139 +20,139 @@ import 'rxjs/add/operator/toPromise';
 })
 export class LandingPageComponent implements OnInit {
 
-  // Google maps
-  private googlePlaceId: any;
-  public latitude: number;
-  public longitude: number;
-  public searchControl: FormControl;
-  public zoom: number;
-  // public bounds = new google.maps.LatLngBounds();
-  public restaurants = [];
-  // public todo = [];
-  public activity;
-  public dangerousUrl;
-  public trustedUrl;
-  public radius;
-  public promise;
-  public apikey;
-  public photolink;
-  public experiences = [];
-  public listings = [];
+  // // Google maps
+  // private googlePlaceId: any;
+  // public latitude: number;
+  // public longitude: number;
+  // public searchControl: FormControl;
+  // public zoom: number;
+  // // public bounds = new google.maps.LatLngBounds();
+  // public restaurants = [];
+  // // public todo = [];
+  // public activity;
+  // public dangerousUrl;
+  // public trustedUrl;
+  // public radius;
+  // public promise;
+  // public apikey;
+  // public photolink;
+  // public experiences = [];
+  // public listings = [];
 
-  @ViewChild("search")
-  public searchElementRef: ElementRef;
+  // @ViewChild("search")
+  // public searchElementRef: ElementRef;
 
   constructor(
     private _localService: LocalApiService,
     private _router: Router,
-    // Google maps
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,
-    private sanitizer: DomSanitizer,
-    private _googleapiService: GoogleApiService
+  //   // Google maps
+  //   private mapsAPILoader: MapsAPILoader,
+  //   private ngZone: NgZone,
+  //   private sanitizer: DomSanitizer,
+  //   private _googleapiService: GoogleApiService
   ) {
-  this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+  // this.zoom = 4;
+  //   this.latitude = 39.8282;
+  //   this.longitude = -98.5795;
 
-    //create search FormControl
-    this.searchControl = new FormControl();
+  //   //create search FormControl
+  //   this.searchControl = new FormControl();
 
-    //set current position
-    this.setCurrentPosition();
+  //   //set current position
+  //   this.setCurrentPosition();
 
-    //load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["(cities)"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+  //   //load Places Autocomplete
+  //   this.mapsAPILoader.load().then(() => {
+  //     let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+  //       types: ["(cities)"]
+  //     });
+  //     autocomplete.addListener("place_changed", () => {
+  //       this.ngZone.run(() => {
+  //         //get the place result
+  //         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
 
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
+  //         //verify result
+  //         if (place.geometry === undefined || place.geometry === null) {
+  //           return;
+  //         }
 
-          console.log(place);
+  //         console.log(place);
 
-          //set latitude, longitude and zoom         
+  //         //set latitude, longitude and zoom         
 
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
-          this.radius = 1000;
-          this.googlePlaceId = place.place_id;
-          this.activity = 'restaurant';
-          this.apikey = 'AIzaSyB5kaJuiKaBBVGKZGm3pEpHJOrjrZt4EiE';
-          this.restaurants = [];
-          this.experiences = [];
-          this.listings = [];
-          this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'restaurant')
-            .subscribe((location) => {
-              for (let alocation in location.results) {
-                this._googleapiService.getLocationdetails(location.results[alocation].place_id)
-                  .subscribe((place) => {
-                    if (place.result.photos) {
-                      if (place.result.photos[0].photo_reference != null && this.restaurants.length < 3 && place.result.rating >= 4.4 && place.result.types != 'lodging') {
-                        this.restaurants.push(place.result);
-                        console.log(place.result);
-                        this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
-                        this.restaurants[this.restaurants.length - 1].photos[0].photo_reference = this.photolink;
-                      }
-                    }
-                  })
-              }
-            })
-          this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'lodging')
-            .subscribe((location) => {
-              for (let alocation in location.results) {
-                this._googleapiService.getLocationdetails(location.results[alocation].place_id)
-                  .subscribe((place) => {
-                    if (place.result.photos) {
-                      if (place.result.photos[0].photo_reference != undefined && this.listings.length < 3 && place.result.rating >= 4.4) {
-                        this.listings.push(place.result);
-                        console.log(place.result);
-                        this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
-                        this.listings[this.listings.length - 1].photos[0].photo_reference = this.photolink;
-                      }
-                    }
+  //         this.latitude = place.geometry.location.lat();
+  //         this.longitude = place.geometry.location.lng();
+  //         this.zoom = 12;
+  //         this.radius = 1000;
+  //         this.googlePlaceId = place.place_id;
+  //         this.activity = 'restaurant';
+  //         this.apikey = 'AIzaSyB5kaJuiKaBBVGKZGm3pEpHJOrjrZt4EiE';
+  //         this.restaurants = [];
+  //         this.experiences = [];
+  //         this.listings = [];
+  //         this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'restaurant')
+  //           .subscribe((location) => {
+  //             for (let alocation in location.results) {
+  //               this._googleapiService.getLocationdetails(location.results[alocation].place_id)
+  //                 .subscribe((place) => {
+  //                   if (place.result.photos) {
+  //                     if (place.result.photos[0].photo_reference != null && this.restaurants.length < 3 && place.result.rating >= 4.4 && place.result.types != 'lodging') {
+  //                       this.restaurants.push(place.result);
+  //                       console.log(place.result);
+  //                       this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
+  //                       this.restaurants[this.restaurants.length - 1].photos[0].photo_reference = this.photolink;
+  //                     }
+  //                   }
+  //                 })
+  //             }
+  //           })
+  //         this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'lodging')
+  //           .subscribe((location) => {
+  //             for (let alocation in location.results) {
+  //               this._googleapiService.getLocationdetails(location.results[alocation].place_id)
+  //                 .subscribe((place) => {
+  //                   if (place.result.photos) {
+  //                     if (place.result.photos[0].photo_reference != undefined && this.listings.length < 3 && place.result.rating >= 4.4) {
+  //                       this.listings.push(place.result);
+  //                       console.log(place.result);
+  //                       this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
+  //                       this.listings[this.listings.length - 1].photos[0].photo_reference = this.photolink;
+  //                     }
+  //                   }
 
-                  })
-              }
-            })
-          this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'night_club')
-            .subscribe((location) => {
-              for (let alocation in location.results) {
-                this._googleapiService.getLocationdetails(location.results[alocation].place_id)
-                  .subscribe((place) => {
-                    if (place.result.photos) {
-                      if (place.result.photos[0].photo_reference != null && this.experiences.length < 3 && place.result.rating >= 4.4) {
-                        this.experiences.push(place.result);
-                        console.log(place.result);
-                        this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
-                        this.experiences[this.experiences.length - 1].photos[0].photo_reference = this.photolink;
-                      }
-                    }
-                  })
-              }
-            })
-        });
-      });
-    });
-  }
+  //                 })
+  //             }
+  //           })
+  //         this._googleapiService.getLocationids(this.latitude, this.longitude, this.radius, 'night_club')
+  //           .subscribe((location) => {
+  //             for (let alocation in location.results) {
+  //               this._googleapiService.getLocationdetails(location.results[alocation].place_id)
+  //                 .subscribe((place) => {
+  //                   if (place.result.photos) {
+  //                     if (place.result.photos[0].photo_reference != null && this.experiences.length < 3 && place.result.rating >= 4.4) {
+  //                       this.experiences.push(place.result);
+  //                       console.log(place.result);
+  //                       this.photolink = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + place.result.photos[0].photo_reference + '&key=' + this.apikey;
+  //                       this.experiences[this.experiences.length - 1].photos[0].photo_reference = this.photolink;
+  //                     }
+  //                   }
+  //                 })
+  //             }
+  //           })
+  //       });
+  //     });
+  //   });
+  // }
 
-  private setCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 15;
-      });
-    }
+  // private setCurrentPosition() {
+  //   if ("geolocation" in navigator) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.latitude = position.coords.latitude;
+  //       this.longitude = position.coords.longitude;
+  //       this.zoom = 15;
+  //     });
+  //   }
   }
 
   ngOnInit(
@@ -195,7 +195,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   getRecentListings(){
-    this._localService.findRecentlyCreated()
+    this._localService.findRecentLand()
     .then(data => this.recentListings = data.listings);
   }
 }

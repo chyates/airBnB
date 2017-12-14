@@ -40,8 +40,12 @@ module.exports = function (app) {
         listings.findAllUser(req, res);
     })
 
-    app.get('/api/listings/recent', function(req, res){
-        listings.findRecent(req, res);
+    app.get('/api/listings/landing/recent', function(req, res){
+        listings.findRecentLanding(req, res);
+    })
+
+    app.get('/api/listings/listing/recent', function(req, res){
+        listings.findRecentListing(req, res);
     })
 
     app.get('/api/currentUser/listing/:id', function(req, res) {

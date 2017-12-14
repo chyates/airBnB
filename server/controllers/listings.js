@@ -111,7 +111,7 @@ module.exports = {
         })
     },
 
-    findRecent: function(req, res){
+    findRecentLanding: function(req, res){
         console.log("Inside find recent listings function")
         Listing.find({}, function (err, listings){
             if (err) {
@@ -121,5 +121,17 @@ module.exports = {
                 res.json({listings: listings})
             }
         }).sort({createdAt: -1}).limit(4);
-    }
+    },
+
+    findRecentListing: function(req, res){
+        console.log("Inside find recent listings function")
+        Listing.find({}, function (err, listings){
+            if (err) {
+                console.log("Inside find 3 most recent: could not find listings");
+            } else {
+                console.log(listings);
+                res.json({listings: listings})
+            }
+        }).sort({createdAt: -1}).limit(3);
+    },
 }

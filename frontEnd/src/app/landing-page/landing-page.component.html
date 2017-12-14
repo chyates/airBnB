@@ -1,6 +1,7 @@
 <router-outlet></router-outlet>
+<a [routerLink]="['/listings']">Listings</a>
 <nav id="navbar-top" class="navbar navbar-expand-lg navbar-light">
-    <img class="img-fluid mx-auto d-block" id="header-logo" src="assets/airbnbLogo.png"/>
+    <img class="img-fluid" id="header-logo" src="assets/airbnbLogo.png"/>
     <button type="button" id="reg-button" class="btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#regModal">Sign up</button>
     <button type="button" id="log-button" class="btn btn-rounded btn-outline-primary" data-toggle="modal" data-target="#logModal">Log in</button>
 </nav>
@@ -140,7 +141,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-6 mx-auto">
-                                                        <input type="submit" name="register-submit" id="register-submit" tabindex="8" class="form-control btn btn-register" value="Register Now">
+                                                        <input type="submit" name="register-submit" id="login-submit" tabindex="8" class="form-control btn btn-register" value="Register Now">
                                                     </div>
                                                 </div>
                                             </div>
@@ -156,70 +157,39 @@
     </div>
 </div>
 
-<div class="container-fluid">
-
-    <div id="cards1" ng-style="{width: {true:'100%',false:'70%'}[restaurants.length == 0]}">
+<div id="recent-listings-container" class="container-fluid">
+    <div id="cards1">
         <h1>Listings</h1>
-        <div class="card" style="width: 32rem;" *ngFor='let listing of recentListings' name='tolist'>
+        <div class="card" *ngFor='let listing of recentListings' name='tolist'>
             <img class="card-img-top" src="{{listing.image}}" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">{{listing.title}}</p>
             </div>
         </div>
-        <div name='defaultstay' *ngIf='recentListings.length == 0'>
-            <div name='defaulteat'>
-                <div class="card" style="width: 32rem;">
-                    <img class="card-img-top" src="http://sturdyhome.com/wp-content/uploads/2015/05/Photos-Tiny-Houses.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                
-                <div class="card" style="width: 32rem;">
-                    <img class="card-img-top" src="http://cdn.home-designing.com/wp-content/uploads/2015/05/attic-apartment.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                
-            <div class="card" style="width: 32rem;">
-                <img class="card-img-top" src="https://imgfave.azureedge.net/image_cache/1377977914275519.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-            
-            <div class="card" style="width: 32rem;">
-                <img class="card-img-top" src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/56c9fd23385259.5645dc35ab4d0.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
     </div>
     <h1>Things to do</h1>
-    <div class="card" style="width: 32rem;" *ngFor='let expe of experiences' name='todo'>
+    <div class="card" *ngFor='let expe of experiences' name='todo'>
         <img class="card-img-top" src="{{expe.photos[0].photo_reference}}" alt="Card image cap">
         <div class="card-body">
             <p class="card-text">{{expe.name}} - Rating {{expe.rating}}</p>
         </div>
     </div>
-    <div name='defaultexp' *ngIf='experiences.length == 0'>
-        <div class="card" style="width: 32rem;">
+    <div name='defaultexp'>
+        <div class="card">
             <img class="card-img-top" src="https://media-cdn.tripadvisor.com/media/photo-s/0f/7a/d5/99/snow-fun-excursion.jpg" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
         
-        <div class="card" style="width: 32rem;">
+        <div class="card">
             <img class="card-img-top" src="http://toyokeizai.net/mwimgs/2/4/1280/img_2439a8445d7b4f80a4e0b873132441743763039.jpg" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
         
-        <div class="card" style="width: 32rem;">
+        <div class="card">
             <img class="card-img-top" src="http://blog.columbia.com/wp-content/uploads/2016/08/Underwater-Scuba-diver-explore-and-enjoy-Coral-reef-Sea-life.jpg"
             alt="Card image cap">
             <div class="card-body">
@@ -227,22 +197,22 @@
             </div>
         </div>
         
-        <div class="card" style="width: 32rem;">
+        <div class="card">
             <img class="card-img-top" src="https://www.lafilm.edu/wp-content/uploads/2017/08/Dance-Show.jpg" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
         </div>
     </div>
-    <h1 name='eattitle' *ngIf='restaurants.length != 0'>Places to eat</h1>
-    <div class="card" style="width: 32rem;" *ngFor='let rest of restaurants' name='toeat'>
+    <h1 name='eattitle'>Places to eat</h1>
+    <div class="card" *ngFor='let rest of restaurants' name='toeat'>
         <img class="card-img-top" src="{{rest.photos[0].photo_reference}}" alt="Card image cap">
         <div class="card-body">
             <p class="card-text">{{rest.name}} - Rating {{rest.rating}}</p>
         </div>
     </div>
 </div>
-<div id='locationmap' name='locmap' *ngIf='restaurants.length != 0'>
+<div id='locationmap' name='locmap'>
     <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
         <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
     </agm-map>
@@ -257,5 +227,4 @@
             <a href="#">Help</a>
         </div>
     </div>
-</div>
 </div>

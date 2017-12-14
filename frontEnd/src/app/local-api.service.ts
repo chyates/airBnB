@@ -77,8 +77,14 @@ export class LocalApiService {
     .toPromise();
   }
 
-  findRecentlyCreated(){
-    return this._http.get('/api/listings/recent')
+  findRecentLand(){
+    return this._http.get('/api/listings/landing/recent')
+    .map(response => response.json())
+    .toPromise();
+  }
+
+  findRecentList(){
+    return this._http.get('/api/listings/listing/recent')
     .map(response => response.json())
     .toPromise();
   }

@@ -1,58 +1,38 @@
-<!-- <head>
-  <link rel="stylesheet" type="text/css" href="listing.component.css">
-</head> -->
-
-<div class="listing-header">
-  <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
+<nav id="inside-navbar-top" class="navbar navbar-expand-lg navbar-light">
+  <a [routerLink]="['/']"><img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg"></a>
   <form id="top-search" #searchForm="ngForm" (submit)="searchByLocation()">
-    <input type="text"
-    name="location"
-    required
-    [(ngModel)]="listing.location"
-    #location = "ngModel"
-    placeholder="Search">
-    <input id="search-submit" type="submit" >
+    <input type="text" name="location" required [(ngModel)]="listing.location" #location="ngModel" placeholder="Search">
+    <input id="search-submit" type="submit">
   </form>
-  <p id="quick-links"><a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> | <a [routerLink]="['/listings']">Listings</a> | <a>Log Out</a></p>
-</div>
+  <p id="quick-links">
+    <a [routerLink]="['/account']">{{ currentUser.firstName }}'s Account</a> |
+    <a [routerLink]="['/listings']">Listings</a> |
+    <a>Log Out</a>
+  </p>
+</nav>
 
-  <div class="container">
-
-    <!-- <table class="table table-responsive-striped">
-      <thead>
-        <tr>
-          <th>Listing Title</th>
-          <th>Listing Description</th>
-          <th>Listing Location</th>
-          <th>Listing Price</th>
-          <th>Listing Room Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of allListings">
-          <td><a [routerLink]="[item._id]">{{ item.title }}</a></td>
-          <td>{{ item.description }}</td>
-          <td>{{ item.location }}</td>
-          <td>{{ item.price | currency:'USD':true}}</td>
-          <td>{{ item.roomType }}</td>
-        </tr>
-      </tbody>
-    </table> -->
-
+<div id="listing-container" class="container-fluid">
+  <div class="row">
     <h2>Most recent listings</h2>
-    <div class="search-results" *ngFor="let l of recentListings">
-      <img id="recent-result-image"src="{{ l.image }}">
+  </div>
+  <div class="home-row row">
+    <div id="recent-listings" class="col-md" *ngFor="let l of recentListings">
+      <img class="img img-fluid img-thumbnail" id="recent-result-image" src="{{ l.image }}">
       <h4><a [routerLink]="[l._id]">{{ l.title }}</a></h4>
       <li>{{ l.price | currency:'USD':true }}</li>
       <li>{{ l.roomType }}</li>
     </div>
-    <hr>
+  </div>
+  <hr>
+  <div class="row">
     <h2>Search listings by city</h2>
-
-    <div class="search-results" *ngFor="let result of searchListings">
-      <img id="search-result-image"src="{{ result.image }}">
+  </div>
+  <div class="home-row row">
+    <div id="search-results" class="col-md" *ngFor="let result of searchListings">
+      <img class="img img-fluid img-thumbnail" id="search-result-image" src="{{ result.image }}">
       <h4><a [routerLink]="[result._id]">{{ result.title }}</a></h4>
       <li>{{ result.price | currency:'USD':true }}</li>
       <li>{{ result.roomType }}</li>
     </div>
   </div>
+</div>
