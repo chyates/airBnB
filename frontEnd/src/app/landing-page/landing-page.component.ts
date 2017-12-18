@@ -1,6 +1,7 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user';
+import { LogUser } from '../log-user';
 import { Listing } from '../listing';
 import { LocalApiService } from '../local-api.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -167,20 +168,24 @@ export class LandingPageComponent implements OnInit {
   loggedIn;
   currentUser;
   user = new User();
-  logUser = new User();
+  logUser = new LogUser();
   recentListings; 
+  emailError: string;
+  passError: string;
 
   validateLogin() {
-    return this._localService.loginUser(this.user)
+    return this._localService.loginUser(this.logUser)
       .then(data => {
         if (data.loggedIn === true) {
           this.currentUser = data.user;
           this.loggedIn = true;
           this._router.navigateByUrl('listings');
         }
-        if (data.error) {
-          console.log(data.error);
-          console.log("Login failed");
+        if (data.emailError) {
+          this.emailError = data.emailError;
+        } 
+        if (data.passwordError) {
+          this.passError = data.passwordError;
         }
       }).catch(err => console.log(err));
   }

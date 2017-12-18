@@ -21,7 +21,6 @@ module.exports = {
             newListing.reservations = [];
             newListing.reviews = [];
             user.listings.push(newListing);
-            console.log(newListing);
             user.save(function (err){
                 if (err) {
                     console.log("Couldn't save listing to user", err)
@@ -117,7 +116,6 @@ module.exports = {
             if (err) {
                 console.log("Inside find 3 most recent: could not find listings");
             } else {
-                console.log(listings);
                 res.json({listings: listings})
             }
         }).sort({createdAt: -1}).limit(4);
@@ -129,7 +127,6 @@ module.exports = {
             if (err) {
                 console.log("Inside find 3 most recent: could not find listings");
             } else {
-                console.log(listings);
                 res.json({listings: listings})
             }
         }).sort({createdAt: -1}).limit(3);

@@ -7,6 +7,7 @@ mongoose.Promise = global.Promise;
 
 module.exports = {
     register: function(req, res) {
+        console.log("Inside register function, body input is:", req.body);
         User.find({email: req.body.email}, function(error, user) {
             if (user.length >= 1) {
                 res.json({
@@ -42,29 +43,20 @@ module.exports = {
     },
 
     login: function (req, res) {
-        console.log("In login function: form body input is:", req.body);
         User.find({email: req.body.email}, function(err, user){
             if (err) {
-                // console.log("In login function:", err);
                 res.json(err);
             } else {
-                console.log(user);
                 if (user.length > 0) {
                     if (bcrypt.compareSync(req.body.password, user[0].password)) {
-                        // console.log(req.body.password);
-                        // console.log(user[0].password);
                         req.session.user = user[0];
-                        // console.log(req.session.user);
                         res.json({user: user[0], loggedIn: true});
                     } else {
-                        // console.log("body password:", req.body.password);
-                        // console.log("DB password", user[0].password);
-                        // console.log(user);
-                        res.json({error: 'Password is incorrect. Please try again', loggedIn: false});
+                        res.json({passwordError: 'Password is incorrect. Please try again', loggedIn: false});
                     }
                 } else {
                     console.log("Couldn't find user", user);
-                    res.json({error: 'Email not found, please register or try again',loggedIn: false});
+                    res.json({emailError: 'Email not found, please register or try again',loggedIn: false});
                 }
             }
         });
