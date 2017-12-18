@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { NgDateRangePickerModule } from 'ng-daterangepicker';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Google Maps Stuff
 import { AgmCoreModule } from '@agm/core';
@@ -73,7 +74,7 @@ import { LocalApiService } from './local-api.service';
     ListingPhotoComponent,
     ListingInstantBookComponent,
     ListingInfoNavComponent,
-    ListingInfoComponent
+    ListingInfoComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -85,7 +86,8 @@ import { LocalApiService } from './local-api.service';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    NgDateRangePickerModule
+    NgDateRangePickerModule,
+    NgbModule.forRoot()
   ],
   providers: [GoogleApiService, LocalApiService],
   bootstrap: [AppComponent]

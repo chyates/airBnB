@@ -44,7 +44,9 @@ export class ListingInfoComponent implements OnInit {
     this._localService.findOneListing(id)
     .then(data => 
       // this.hostId = data.listing._host;
-      {this.thisListing = data.listing
+      {
+        this.thisListing = data.listing
+        console.log(this.thisListing);
         this.allReviews = data.listing.reviews})
       // this.listingId = data.listing._id });
       // console.log("current listing:", this.thisListing);

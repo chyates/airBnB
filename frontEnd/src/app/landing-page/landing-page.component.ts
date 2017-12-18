@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from '../user';
 import { Listing } from '../listing';
 import { LocalApiService } from '../local-api.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 // Google maps
 import { FormControl } from '@angular/forms';
@@ -45,6 +46,7 @@ export class LandingPageComponent implements OnInit {
   constructor(
     private _localService: LocalApiService,
     private _router: Router,
+    private modalService: NgbModal
   //   // Google maps
   //   private mapsAPILoader: MapsAPILoader,
   //   private ngZone: NgZone,
@@ -197,5 +199,26 @@ export class LandingPageComponent implements OnInit {
   getRecentListings(){
     this._localService.findRecentLand()
     .then(data => this.recentListings = data.listings);
+  }
+
+  // modal stuff
+
+  closeResult: string;
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 }

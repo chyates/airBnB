@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="listing-info.component.css"> -->
-  <title>Listing Info</title>
-</head>
-
-<body>
   <div class="listing-header">
     <img id="header-logo" src="https://d3ui957tjb5bqd.cloudfront.net/uploads/2015/09/airbnb-2.jpg">
     <form id="top-search">
@@ -24,7 +13,7 @@
     <div id="main-info">
       <div id="main-content-listing">
         <p><a>Overview</a> &#9679; <a>Reviews</a> &#9679; <a>Location</a></p>
-        <h2>{{ thisListing.title }}</h2>
+        <h2>Title: {{ thisListing.title }}</h2>
         <p>{{ thisListing.description }}</p>
         <hr>
         <div *ngFor="let r of allReviews; let idx=index">
@@ -93,6 +82,3 @@
       <input type="submit" value="Leave review">
     </form>
   </div>
-</body>
-
-</html>
