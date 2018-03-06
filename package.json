@@ -15,7 +15,6 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
-    "handlebars": "^4.0.11",
     "mongoose": "^4.12.1",
     "mongoose-unique-validator": "^1.0.6",
     "ng-daterangepicker": "^0.2.0"
