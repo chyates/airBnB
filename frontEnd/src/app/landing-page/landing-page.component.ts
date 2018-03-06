@@ -4,10 +4,10 @@ import { User } from '../user';
 import { LogUser } from '../log-user';
 import { Listing } from '../listing';
 import { LocalApiService } from '../local-api.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl } from '@angular/forms';
 
 // Google maps
-import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
